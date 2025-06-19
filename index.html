@@ -71,6 +71,162 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-hello-world" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/06/19/hello-world/" class="article-date">
+  <time class="dt-published" datetime="2025-06-19T12:38:04.927Z" itemprop="datePublished">2025-06-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2025/06/19/hello-world/">hexo</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/06/19/hello-world/" data-id="cmc3dbxtl0002hlqw5hvtezql" data-title="hexo" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%85%B6%E4%BB%96/" rel="tag">其他</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-变量" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/06/19/%E5%8F%98%E9%87%8F/" class="article-date">
+  <time class="dt-published" datetime="2025-06-19T12:37:27.000Z" itemprop="datePublished">2025-06-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2025/06/19/%E5%8F%98%E9%87%8F/">变量</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h4 id="let"><a href="#let" class="headerlink" title="let"></a>let</h4><p><code>let</code> 是 Rust中用来 <strong>绑定变量（声明 + 赋值）</strong> 的关键字 是不可变的,如下代码运行会报错</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">fn</span> <span class="title function_">main</span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> <span class="variable">x</span> = <span class="number">5</span>;</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;The value of x is: &#123;&#125;&quot;</span>, x);</span><br><span class="line">    x = <span class="number">6</span>;</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;The value of x is: &#123;&#125;&quot;</span>, x);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>变量定义顺序</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> 变量名: 类型 = 值;</span><br></pre></td></tr></table></figure>
+
+<h4 id="mut"><a href="#mut" class="headerlink" title="mut"></a>mut</h4><p><font style="color:rgb(0, 0, 0);"> </font><code>&lt;font style=&quot;color:rgb(0, 0, 0);&quot;&gt;mut&lt;/font&gt;</code><font style="color:rgb(0, 0, 0);">关键字让变量变为</font><strong><font style="color:rgb(0, 0, 0);">可变的</font></strong></p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">fn</span> <span class="title function_">main</span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> <span class="keyword">mut </span><span class="variable">x</span> = <span class="number">5</span>;</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;The value of x is: &#123;&#125;&quot;</span>, x);</span><br><span class="line">    x = <span class="number">6</span>;</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;The value of x is: &#123;&#125;&quot;</span>, x);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="常量（const）"><a href="#常量（const）" class="headerlink" title="常量（const）"></a>常量（const）</h4><p>常量</p>
+<ol>
+<li>编译时确定值</li>
+<li>必须声明类型</li>
+<li>必须大写</li>
+<li>编译时被内联，静态变量不会，整个程序中静态变量只有一个实例，引用指向地址值</li>
+</ol>
+<p>不可变变量</p>
+<ol>
+<li>运行时才能确定值</li>
+<li>不可变变量不需要声明类型</li>
+<li>不可变变量不需要大写</li>
+</ol>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> NUM:<span class="type">i32</span> = <span class="number">10</span>；</span><br></pre></td></tr></table></figure>
+
+<h4 id="静态变量（static）"><a href="#静态变量（static）" class="headerlink" title="静态变量（static）"></a>静态变量（static）</h4><ol>
+<li>整个程序中共享</li>
+<li>默认不可改变</li>
+<li>大写</li>
+<li>需要声明mut关键之,可以改变</li>
+</ol>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> NUM:<span class="type">i32</span> = <span class="number">10</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.nlark.com/yuque/0/2025/png/8357099/1750333285272-9a3d591f-e9cf-4816-85de-bc5aa77175b5.png"></p>
+<h4 id="使用下划线开头忽略未使用的变量"><a href="#使用下划线开头忽略未使用的变量" class="headerlink" title="使用下划线开头忽略未使用的变量"></a><a target="_blank" rel="noopener" href="https://course.rs/basic/variable.html#%E4%BD%BF%E7%94%A8%E4%B8%8B%E5%88%92%E7%BA%BF%E5%BC%80%E5%A4%B4%E5%BF%BD%E7%95%A5%E6%9C%AA%E4%BD%BF%E7%94%A8%E7%9A%84%E5%8F%98%E9%87%8F"><font style="color:rgb(0, 0, 0);">使用下划线开头忽略未使用的变量</font></a></h4><p>x和y都是未使用到变量,<strong><font style="color:rgb(0, 0, 0);">希望告诉 Rust 不要警告未使用的变量，为此可以用下划线作为变量名的开头</font></strong></p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">fn</span> <span class="title function_">main</span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> <span class="variable">_x</span> = <span class="number">5</span>;</span><br><span class="line">    <span class="keyword">let</span> <span class="variable">y</span> = <span class="number">10</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="作用域和遮蔽"><a href="#作用域和遮蔽" class="headerlink" title="作用域和遮蔽"></a>作用域和遮蔽</h4><p> Rust 允许 <strong>在同一个作用域中用 <strong><code>**let**</code></strong> 重复定义变量名</strong>这叫：🎯** Shadowing（遮蔽）**</p>
+<table>
+<thead>
+<tr>
+<th>特性</th>
+<th>变量遮蔽 (<code>let a = ...</code>)</th>
+<th>可变变量 (<code>let mut a = ...</code>)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>是否修改原变量</td>
+<td>❌ 否，是创建新变量</td>
+<td>✅ 是，修改原来的值</td>
+</tr>
+<tr>
+<td>是否能改变类型</td>
+<td>✅ 是</td>
+<td>❌ 否，类型一旦声明不能改</td>
+</tr>
+<tr>
+<td>是否能改变可变性</td>
+<td>✅ 是，可以从不可变变成可变</td>
+<td>❌ 否，只决定原变量是否能改</td>
+</tr>
+</tbody></table>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/06/19/%E5%8F%98%E9%87%8F/" data-id="cmc3dcszr0000p3qw8wzm5o3r" data-title="变量" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Rust/" rel="tag">Rust</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-Rust入门之环境搭建" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2025/06/18/Rust%E5%85%A5%E9%97%A8%E4%B9%8B%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" class="article-date">
@@ -106,13 +262,13 @@
 
 <h4 id="卸载"><a href="#卸载" class="headerlink" title="卸载"></a>卸载</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rustup self uninstall</span><br></pre></td></tr></table></figure>
 
-<h3 id="vscode插件"><a href="#vscode插件" class="headerlink" title="vscode插件"></a>vscode插件</h3><ol>
+<h3 id="vscode-插件"><a href="#vscode-插件" class="headerlink" title="vscode 插件"></a>vscode 插件</h3><ol>
 <li><font style="color:rgb(77, 77, 77);">Rust Analyzer</font></li>
 <li><font style="color:rgb(77, 77, 77);">CodeLLDB </font></li>
 <li><font style="color:rgb(77, 77, 77);">Even Better Toml</font></li>
-<li><font style="color:rgb(77, 77, 77);">crates已废弃改用</font><font style="color:#DF2A3F;">Dependi</font></li>
+<li><font style="color:rgb(77, 77, 77);">crates 已废弃改用</font><font style="color:#DF2A3F;">Dependi</font></li>
 </ol>
-<h3 id="编译rs文件"><a href="#编译rs文件" class="headerlink" title="编译rs文件"></a>编译rs文件</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rustc main.rs</span><br></pre></td></tr></table></figure>
+<h3 id="编译-rs-文件"><a href="#编译-rs-文件" class="headerlink" title="编译 rs 文件"></a>编译 rs 文件</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rustc main.rs</span><br></pre></td></tr></table></figure>
 
 <h3 id="cargo"><a href="#cargo" class="headerlink" title="cargo"></a>cargo</h3><h4 id="初始化项目"><a href="#初始化项目" class="headerlink" title="初始化项目"></a>初始化项目</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cargo new xxx</span><br></pre></td></tr></table></figure>
 
@@ -120,9 +276,9 @@
 
 <h4 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cargo run</span><br></pre></td></tr></table></figure>
 
-<h4 id="配置国内镜像"><a href="#配置国内镜像" class="headerlink" title="配置国内镜像"></a>配置国内镜像</h4><h5 id="查看cargo所在文件"><a href="#查看cargo所在文件" class="headerlink" title="查看cargo所在文件"></a>查看cargo所在文件</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls -la ~/.cargo/</span><br></pre></td></tr></table></figure>
+<h4 id="配置国内镜像"><a href="#配置国内镜像" class="headerlink" title="配置国内镜像"></a>配置国内镜像</h4><h5 id="查看-cargo-所在文件"><a href="#查看-cargo-所在文件" class="headerlink" title="查看 cargo 所在文件"></a>查看 cargo 所在文件</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls -la ~/.cargo/</span><br></pre></td></tr></table></figure>
 
-<h5 id="创建config-toml"><a href="#创建config-toml" class="headerlink" title="创建config.toml"></a>创建config.toml</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">touch ~/.cargo/config.toml</span><br></pre></td></tr></table></figure>
+<h5 id="创建-config-toml"><a href="#创建-config-toml" class="headerlink" title="创建 config.toml"></a>创建 config.toml</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">touch ~/.cargo/config.toml</span><br></pre></td></tr></table></figure>
 
 <h5 id="覆盖默认的镜像地址"><a href="#覆盖默认的镜像地址" class="headerlink" title="覆盖默认的镜像地址"></a>覆盖默认的镜像地址</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[source.crates-io]</span><br><span class="line">replace-with = &#x27;ustc&#x27;</span><br><span class="line"></span><br><span class="line">[source.ustc]</span><br><span class="line">registry = &quot;git://mirrors.ustc.edu.cn/crates.io-index&quot;</span><br></pre></td></tr></table></figure>
 
@@ -131,61 +287,12 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/06/18/Rust%E5%85%A5%E9%97%A8%E4%B9%8B%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" data-id="cmc1z99qo0000scqw9q117ebb" data-title="Rust入门之环境搭建" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/06/18/Rust%E5%85%A5%E9%97%A8%E4%B9%8B%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" data-id="cmc3dbxth0001hlqwc3t678px" data-title="Rust入门之环境搭建" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
-    </footer>
-  </div>
-  
-</article>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Rust/" rel="tag">Rust</a></li></ul>
 
-
-
-  
-    <article id="post-hello-world" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2025/06/18/hello-world/" class="article-date">
-  <time class="dt-published" datetime="2025-06-18T10:45:48.476Z" itemprop="datePublished">2025-06-18</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2025/06/18/hello-world/">hexo</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2025/06/18/hello-world/" data-id="cmc1utv1w0000ruqw0sd99t7c" data-title="hexo" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
     </footer>
   </div>
   
@@ -204,9 +311,23 @@
 
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Rust/" rel="tag">Rust</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%85%B6%E4%BB%96/" rel="tag">其他</a></li></ul>
+    </div>
+  </div>
+
 
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Rust/" style="font-size: 20px;">Rust</a> <a href="/tags/%E5%85%B6%E4%BB%96/" style="font-size: 10px;">其他</a>
+    </div>
+  </div>
+
   
     
   <div class="widget-wrap">
@@ -225,11 +346,15 @@
       <ul>
         
           <li>
-            <a href="/2025/06/18/Rust%E5%85%A5%E9%97%A8%E4%B9%8B%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">Rust入门之环境搭建</a>
+            <a href="/2025/06/19/hello-world/">hexo</a>
           </li>
         
           <li>
-            <a href="/2025/06/18/hello-world/">hexo</a>
+            <a href="/2025/06/19/%E5%8F%98%E9%87%8F/">变量</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/18/Rust%E5%85%A5%E9%97%A8%E4%B9%8B%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">Rust入门之环境搭建</a>
           </li>
         
       </ul>

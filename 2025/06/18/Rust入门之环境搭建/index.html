@@ -14,8 +14,9 @@
 <meta property="og:description" content="Rust 安装安装链接1curl --proto &#x27;&#x3D;https&#x27; --tlsv1.2 -sSf https:&#x2F;&#x2F;sh.rustup.rs | sh  构建报错12345lsy@DESKTOP-GIELOCC:~&#x2F;hello_rust$ cargo runCompiling hello_rust v0.1.0 (&#x2F;home&#x2F;lsy&#x2F;hello_rust)error: linke">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2025-06-18T13:16:56.000Z">
-<meta property="article:modified_time" content="2025-06-18T13:17:37.240Z">
+<meta property="article:modified_time" content="2025-06-19T12:38:04.927Z">
 <meta property="article:author" content="John Doe">
+<meta property="article:tag" content="Rust">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/atom.xml" title="Li" type="application/atom+xml">
@@ -108,13 +109,13 @@
 
 <h4 id="卸载"><a href="#卸载" class="headerlink" title="卸载"></a>卸载</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rustup self uninstall</span><br></pre></td></tr></table></figure>
 
-<h3 id="vscode插件"><a href="#vscode插件" class="headerlink" title="vscode插件"></a>vscode插件</h3><ol>
+<h3 id="vscode-插件"><a href="#vscode-插件" class="headerlink" title="vscode 插件"></a>vscode 插件</h3><ol>
 <li><font style="color:rgb(77, 77, 77);">Rust Analyzer</font></li>
 <li><font style="color:rgb(77, 77, 77);">CodeLLDB </font></li>
 <li><font style="color:rgb(77, 77, 77);">Even Better Toml</font></li>
-<li><font style="color:rgb(77, 77, 77);">crates已废弃改用</font><font style="color:#DF2A3F;">Dependi</font></li>
+<li><font style="color:rgb(77, 77, 77);">crates 已废弃改用</font><font style="color:#DF2A3F;">Dependi</font></li>
 </ol>
-<h3 id="编译rs文件"><a href="#编译rs文件" class="headerlink" title="编译rs文件"></a>编译rs文件</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rustc main.rs</span><br></pre></td></tr></table></figure>
+<h3 id="编译-rs-文件"><a href="#编译-rs-文件" class="headerlink" title="编译 rs 文件"></a>编译 rs 文件</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rustc main.rs</span><br></pre></td></tr></table></figure>
 
 <h3 id="cargo"><a href="#cargo" class="headerlink" title="cargo"></a>cargo</h3><h4 id="初始化项目"><a href="#初始化项目" class="headerlink" title="初始化项目"></a>初始化项目</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cargo new xxx</span><br></pre></td></tr></table></figure>
 
@@ -122,9 +123,9 @@
 
 <h4 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cargo run</span><br></pre></td></tr></table></figure>
 
-<h4 id="配置国内镜像"><a href="#配置国内镜像" class="headerlink" title="配置国内镜像"></a>配置国内镜像</h4><h5 id="查看cargo所在文件"><a href="#查看cargo所在文件" class="headerlink" title="查看cargo所在文件"></a>查看cargo所在文件</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls -la ~/.cargo/</span><br></pre></td></tr></table></figure>
+<h4 id="配置国内镜像"><a href="#配置国内镜像" class="headerlink" title="配置国内镜像"></a>配置国内镜像</h4><h5 id="查看-cargo-所在文件"><a href="#查看-cargo-所在文件" class="headerlink" title="查看 cargo 所在文件"></a>查看 cargo 所在文件</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls -la ~/.cargo/</span><br></pre></td></tr></table></figure>
 
-<h5 id="创建config-toml"><a href="#创建config-toml" class="headerlink" title="创建config.toml"></a>创建config.toml</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">touch ~/.cargo/config.toml</span><br></pre></td></tr></table></figure>
+<h5 id="创建-config-toml"><a href="#创建-config-toml" class="headerlink" title="创建 config.toml"></a>创建 config.toml</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">touch ~/.cargo/config.toml</span><br></pre></td></tr></table></figure>
 
 <h5 id="覆盖默认的镜像地址"><a href="#覆盖默认的镜像地址" class="headerlink" title="覆盖默认的镜像地址"></a>覆盖默认的镜像地址</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[source.crates-io]</span><br><span class="line">replace-with = &#x27;ustc&#x27;</span><br><span class="line"></span><br><span class="line">[source.ustc]</span><br><span class="line">registry = &quot;git://mirrors.ustc.edu.cn/crates.io-index&quot;</span><br></pre></td></tr></table></figure>
 
@@ -133,21 +134,27 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/06/18/Rust%E5%85%A5%E9%97%A8%E4%B9%8B%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" data-id="cmc1z99qo0000scqw9q117ebb" data-title="Rust入门之环境搭建" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/06/18/Rust%E5%85%A5%E9%97%A8%E4%B9%8B%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" data-id="cmc3dbxth0001hlqwc3t678px" data-title="Rust入门之环境搭建" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Rust/" rel="tag">Rust</a></li></ul>
+
     </footer>
   </div>
   
     
 <nav id="article-nav">
   
-  
-    <a href="/2025/06/18/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">hexo</div>
+    <a href="/2025/06/19/%E5%8F%98%E9%87%8F/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          变量
+        
+      </div>
     </a>
+  
   
 </nav>
 
@@ -163,9 +170,23 @@
 
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Rust/" rel="tag">Rust</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%85%B6%E4%BB%96/" rel="tag">其他</a></li></ul>
+    </div>
+  </div>
+
 
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Rust/" style="font-size: 20px;">Rust</a> <a href="/tags/%E5%85%B6%E4%BB%96/" style="font-size: 10px;">其他</a>
+    </div>
+  </div>
+
   
     
   <div class="widget-wrap">
@@ -184,11 +205,15 @@
       <ul>
         
           <li>
-            <a href="/2025/06/18/Rust%E5%85%A5%E9%97%A8%E4%B9%8B%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">Rust入门之环境搭建</a>
+            <a href="/2025/06/19/hello-world/">hexo</a>
           </li>
         
           <li>
-            <a href="/2025/06/18/hello-world/">hexo</a>
+            <a href="/2025/06/19/%E5%8F%98%E9%87%8F/">变量</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/18/Rust%E5%85%A5%E9%97%A8%E4%B9%8B%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">Rust入门之环境搭建</a>
           </li>
         
       </ul>
