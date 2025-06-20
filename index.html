@@ -99,16 +99,15 @@
 </ul>
 <figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">fn</span> <span class="title function_">add</span>(i: <span class="type">i32</span>, j: <span class="type">i32</span>) <span class="punctuation">-&gt;</span> <span class="type">i32</span> &#123;</span><br><span class="line">   i + j</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://cdn.nlark.com/yuque/0/2025/png/8357099/1750323838877-8451ee81-669d-438b-b39e-efa0e059ab5b.png"></p>
 <h4 id="无返回值"><a href="#无返回值" class="headerlink" title="无返回值"></a>无返回值</h4><p>如果一个函数没有返回值，那么就返回<code>()</code></p>
 <figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">fn</span> <span class="title function_">print</span>(i: <span class="type">i32</span>) &#123;</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;&#123;&#125;&quot;</span>, i);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">fn</span> <span class="title function_">print</span>(i: <span class="type">i32</span>) <span class="punctuation">-&gt;</span> () &#123;</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;&#123;&#125;&quot;</span>, i);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h3 id="函数要点"><a href="#函数要点" class="headerlink" title="函数要点"></a>函数要点</h3><ul>
-<li><font style="color:rgb(0, 0, 0);">函数名和变量名使用</font><a target="_blank" rel="noopener" href="https://course.rs/practice/naming.html"><font style="color:rgb(32, 96, 159);">蛇形命名法(snake case)</font></a><font style="color:rgb(0, 0, 0);">，例如 </font><code>&lt;font style=&quot;color:rgb(48, 25, 0);background-color:rgb(246, 247, 246);&quot;&gt;fn add_two() &#123;&#125;&lt;/font&gt;</code></li>
+<li><font style="color:rgb(0, 0, 0);">函数名和变量名使用</font><a target="_blank" rel="noopener" href="https://course.rs/practice/naming.html"><font style="color:rgb(32, 96, 159);">蛇形命名法(snake case)</font></a><font style="color:rgb(0, 0, 0);">，例如 </font><code>fn add_two() &#123;&#125;</code></li>
 <li><font style="color:rgb(0, 0, 0);">函数的位置可以随便放，Rust 不关心我们在哪里定义了函数，只要有定义即可</font></li>
 <li><font style="color:#DF2A3F;">每个函数参数都需要标注类型</font></li>
 </ul>
-<p><font style="color:rgb(0, 0, 0);">当用 </font><code>&lt;font style=&quot;color:rgb(48, 25, 0);background-color:rgb(246, 247, 246);&quot;&gt;!&lt;/font&gt;</code><font style="color:rgb(0, 0, 0);"> 作函数返回类型的时候，表示该函数永不返回( diverging functions )，特别的，这种语法往往用做会导致程序崩溃的函数</font></p>
+<p><font style="color:rgb(0, 0, 0);">当用 </font><code>!</code><font style="color:rgb(0, 0, 0);"> 作函数返回类型的时候，表示该函数永不返回( diverging functions )，特别的，这种语法往往用做会导致程序崩溃的函数</font></p>
 <figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">fn</span> <span class="title function_">forever</span>() <span class="punctuation">-&gt;</span> ! &#123;</span><br><span class="line">  <span class="keyword">loop</span> &#123;</span><br><span class="line">    <span class="comment">//...</span></span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">fn</span> <span class="title function_">dead_end</span>() <span class="punctuation">-&gt;</span> ! &#123;</span><br><span class="line">  <span class="built_in">panic!</span>(<span class="string">&quot;你已经到了穷途末路，崩溃吧！&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -116,7 +115,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/06/20/%E5%87%BD%E6%95%B0/" data-id="cmc4482mh0004irvk3bcp5j00" data-title="函数" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/06/20/%E5%87%BD%E6%95%B0/" data-id="cmc44tpvk000414vk54s10ea0" data-title="函数" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -218,7 +217,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/06/19/%E5%8F%98%E9%87%8F/" data-id="cmc4482mi0005irvk664v4d59" data-title="变量" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/06/19/%E5%8F%98%E9%87%8F/" data-id="cmc44tpvm000514vk1vq37qys" data-title="变量" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -271,7 +270,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/06/19/hello-world/" data-id="cmc4482mf0002irvk0syvdhou" data-title="hexo" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/06/19/hello-world/" data-id="cmc44tpvi000214vk3vo76b5o" data-title="hexo" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -345,7 +344,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/06/18/Rust%E5%85%A5%E9%97%A8%E4%B9%8B%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" data-id="cmc4482mc0001irvk2vh3h9l3" data-title="Rust入门之环境搭建" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/06/18/Rust%E5%85%A5%E9%97%A8%E4%B9%8B%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" data-id="cmc44tpvf000114vk38732ngh" data-title="Rust入门之环境搭建" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
