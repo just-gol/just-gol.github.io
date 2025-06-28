@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>字符串 | Li</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="切片使用方括号包括的一个序列：[开始索引..终止索引]包含左不包含右 1234let s &#x3D; String::from(&quot;hello world&quot;);let hello &#x3D; &amp;s[0..5];let world &#x3D; &amp;s[6..11];  获取最后一个元素的 2 种方法 123456let s &#x3D; String::from(&quot;hello&quot;);">
+<meta property="og:type" content="article">
+<meta property="og:title" content="字符串">
+<meta property="og:url" content="http://example.com/2025/06/25/%E5%AD%97%E7%AC%A6%E4%B8%B2/index.html">
+<meta property="og:site_name" content="Li">
+<meta property="og:description" content="切片使用方括号包括的一个序列：[开始索引..终止索引]包含左不包含右 1234let s &#x3D; String::from(&quot;hello world&quot;);let hello &#x3D; &amp;s[0..5];let world &#x3D; &amp;s[6..11];  获取最后一个元素的 2 种方法 123456let s &#x3D; String::from(&quot;hello&quot;);">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2025-06-25T07:25:28.000Z">
+<meta property="article:modified_time" content="2025-06-28T08:26:18.439Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="Rust">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Li" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Li</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-字符串" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/06/25/%E5%AD%97%E7%AC%A6%E4%B8%B2/" class="article-date">
+  <time class="dt-published" datetime="2025-06-25T07:25:28.000Z" itemprop="datePublished">2025-06-25</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      字符串
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="切片"><a href="#切片" class="headerlink" title="切片"></a>切片</h3><p><font style="color:rgb(0, 0, 0);">使用方括号包括的一个序列：</font><strong><font style="color:rgb(0, 0, 0);">[开始索引..终止索引]包含左不包含右</font></strong></p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="variable">s</span> = <span class="type">String</span>::<span class="title function_ invoke__">from</span>(<span class="string">&quot;hello world&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> <span class="variable">hello</span> = &amp;s[<span class="number">0</span>..<span class="number">5</span>];</span><br><span class="line"><span class="keyword">let</span> <span class="variable">world</span> = &amp;s[<span class="number">6</span>..<span class="number">11</span>];</span><br></pre></td></tr></table></figure>
+
+<p>获取最后一个元素的 2 种方法</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="variable">s</span> = <span class="type">String</span>::<span class="title function_ invoke__">from</span>(<span class="string">&quot;hello&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> <span class="variable">len</span> = s.<span class="title function_ invoke__">len</span>();</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> <span class="variable">slice</span> = &amp;s[<span class="number">4</span>..len];</span><br><span class="line"><span class="keyword">let</span> <span class="variable">slice</span> = &amp;s[<span class="number">4</span>..];</span><br></pre></td></tr></table></figure>
+
+<h3 id="字符串的字面量是切片"><a href="#字符串的字面量是切片" class="headerlink" title="字符串的字面量是切片"></a>字符串的字面量是切片</h3><figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 之前提到过字符串字面量，但是没有提到它的类型：</span></span><br><span class="line"><span class="keyword">let</span> <span class="variable">s</span> = <span class="string">&quot;Hello, world!&quot;</span>;</span><br><span class="line"><span class="comment">// 实际上，s 的类型是 &amp;str，因此你也可以这样声明：</span></span><br><span class="line"><span class="keyword">let</span> <span class="variable">s</span>: &amp;<span class="type">str</span> = <span class="string">&quot;Hello, world!&quot;</span>;</span><br></pre></td></tr></table></figure>
+
+<p><code>&amp;str</code>指向的是不可变的引用</p>
+<h3 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a><a target="_blank" rel="noopener" href="https://www.yuque.com/lisiyi-ephgy/nyhpoz/pzgsysfcyx4y5btw#QVwW0">字符串</a></h3><h4 id="String-与-str-的转换"><a href="#String-与-str-的转换" class="headerlink" title="String 与 &amp;str 的转换"></a><a target="_blank" rel="noopener" href="https://course.rs/basic/compound-type/string-slice.html#string-%E4%B8%8E-str-%E7%9A%84%E8%BD%AC%E6%8D%A2"><font style="color:rgb(0, 0, 0);">String 与 &amp;str 的转换</font></a></h4><figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">fn</span> <span class="title function_">main</span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> <span class="variable">s</span> = <span class="type">String</span>::<span class="title function_ invoke__">from</span>(<span class="string">&quot;hello,world!&quot;</span>);</span><br><span class="line">    <span class="title function_ invoke__">say_hello</span>(&amp;s);</span><br><span class="line">    <span class="title function_ invoke__">say_hello</span>(&amp;s[..]);</span><br><span class="line">    <span class="title function_ invoke__">say_hello</span>(s.<span class="title function_ invoke__">as_str</span>()); <span class="comment">// 详见所有权中字符串解释</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">fn</span> <span class="title function_">say_hello</span>(s: &amp;<span class="type">str</span>) &#123;</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;&#123;&#125;&quot;</span>,s);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="操作字符串"><a href="#操作字符串" class="headerlink" title="操作字符串"></a>操作字符串</h4><figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&amp;<span class="symbol">&#x27;static</span> <span class="type">str</span></span><br></pre></td></tr></table></figure>
+
+<p>它是一个：</p>
+<ul>
+<li><strong>不可变的字符串引用</strong></li>
+<li>存储在<strong>程序的只读内存区</strong></li>
+<li>生命周期是 <code>&#39;static</code>（程序整个运行期都有效）</li>
+<li>有能力去修改内容</li>
+</ul>
+<h5 id="追加-Push"><a href="#追加-Push" class="headerlink" title="追加(Push)"></a>追加(Push)</h5><p><font style="color:rgb(0, 0, 0);">在字符串尾部可以使用 </font><code>push()</code><font style="color:rgb(0, 0, 0);"> 方法追加字符 </font><code>char</code><font style="color:rgb(0, 0, 0);">，也可以使用 </font><code>push_str()</code><font style="color:rgb(0, 0, 0);"> 方法追加字符串字面量。这两个方法都是</font><strong><font style="color:rgb(0, 0, 0);">在原有的字符串上追加，并不会返回新的字符串</font></strong><font style="color:rgb(0, 0, 0);">。由于字符串追加操作要修改原来的字符串，则该字符串必须是可变的，即</font><strong><font style="color:rgb(0, 0, 0);">字符串变量必须由 </font></strong><code>**mut**</code><strong><font style="color:rgb(0, 0, 0);"> 关键字修饰</font></strong><font style="color:rgb(0, 0, 0);">。</font></p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">fn</span> <span class="title function_">main</span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> <span class="keyword">mut </span><span class="variable">s</span> = <span class="type">String</span>::<span class="title function_ invoke__">from</span>(<span class="string">&quot;Hello &quot;</span>);</span><br><span class="line"></span><br><span class="line">    s.<span class="title function_ invoke__">push_str</span>(<span class="string">&quot;rust&quot;</span>);</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;追加字符串 push_str() -&gt; &#123;&#125;&quot;</span>, s);</span><br><span class="line"></span><br><span class="line">    s.<span class="title function_ invoke__">push</span>(<span class="string">&#x27;!&#x27;</span>);</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;追加字符 push() -&gt; &#123;&#125;&quot;</span>, s);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="插入-Insert"><a href="#插入-Insert" class="headerlink" title="插入(Insert)"></a>插入(Insert)</h5><p><font style="color:rgb(0, 0, 0);">字符串插入操作要</font><strong><font style="color:rgb(0, 0, 0);">修改原来的字符串</font></strong><font style="color:rgb(0, 0, 0);">，则该字符串必须是可变的，即</font><strong><font style="color:rgb(0, 0, 0);">字符串变量必须由 </font></strong><code>**mut**</code><strong><font style="color:rgb(0, 0, 0);"> 关键字修饰</font></strong><font style="color:rgb(0, 0, 0);">。</font></p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">fn</span> <span class="title function_">main</span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> <span class="keyword">mut </span><span class="variable">s</span> = <span class="type">String</span>::<span class="title function_ invoke__">from</span>(<span class="string">&quot;Hello rust!&quot;</span>);</span><br><span class="line">    s.<span class="title function_ invoke__">insert</span>(<span class="number">5</span>, <span class="string">&#x27;,&#x27;</span>);</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;插入字符 insert() -&gt; &#123;&#125;&quot;</span>, s);</span><br><span class="line">    s.<span class="title function_ invoke__">insert_str</span>(<span class="number">6</span>, <span class="string">&quot; I like&quot;</span>);</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;插入字符串 insert_str() -&gt; &#123;&#125;&quot;</span>, s);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="替换-Replace"><a href="#替换-Replace" class="headerlink" title="替换 (Replace)"></a><a target="_blank" rel="noopener" href="https://course.rs/basic/compound-type/string-slice.html#%E6%9B%BF%E6%8D%A2-replace"><font style="color:rgb(0, 0, 0);">替换 (Replace)</font></a></h5><p><font style="color:rgb(0, 0, 0);">该方法是返回一个新的字符串，而不是操作原来的字符串。</font></p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">fn</span> <span class="title function_">main</span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> <span class="variable">string_replace</span> = <span class="type">String</span>::<span class="title function_ invoke__">from</span>(<span class="string">&quot;I like rust. Learning rust is my favorite!&quot;</span>);</span><br><span class="line">    <span class="keyword">let</span> <span class="variable">new_string_replace</span> = string_replace.<span class="title function_ invoke__">replace</span>(<span class="string">&quot;rust&quot;</span>, <span class="string">&quot;RUST&quot;</span>);</span><br><span class="line">    dbg!(new_string_replace);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="replacen"><a href="#replacen" class="headerlink" title="replacen"></a><font style="color:rgb(48, 25, 0);background-color:rgb(246, 247, 246);">replacen</font></h5><p><font style="color:rgb(0, 0, 0);">前两个参数与 </font><code>replace()</code><font style="color:rgb(0, 0, 0);"> 方法一样，第三个参数则表示替换的个数。</font></p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">fn</span> <span class="title function_">main</span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> <span class="variable">string_replace</span> = <span class="string">&quot;I like rust. Learning rust is my favorite!&quot;</span>;</span><br><span class="line">    <span class="keyword">let</span> <span class="variable">new_string_replacen</span> = string_replace.<span class="title function_ invoke__">replacen</span>(<span class="string">&quot;rust&quot;</span>, <span class="string">&quot;RUST&quot;</span>, <span class="number">1</span>);</span><br><span class="line">    dbg!(new_string_replacen);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="replace-range"><a href="#replace-range" class="headerlink" title="replace_range"></a>replace_range</h5><p>该方法是直接操作原来的字符串</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">fn</span> <span class="title function_">main</span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> <span class="keyword">mut </span><span class="variable">string</span> = <span class="type">String</span>::<span class="title function_ invoke__">from</span>(<span class="string">&quot;hello&quot;</span>);</span><br><span class="line">    <span class="comment">// 如果范围小于替换长度,字符串会变长,反之会变短</span></span><br><span class="line">    string.<span class="title function_ invoke__">replace_range</span>(<span class="number">0</span>..<span class="number">1</span>, <span class="string">&quot;H&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="删除-Delete"><a href="#删除-Delete" class="headerlink" title="删除 (Delete)"></a><a target="_blank" rel="noopener" href="https://course.rs/basic/compound-type/string-slice.html#%E5%88%A0%E9%99%A4-delete"><font style="color:rgb(0, 0, 0);">删除 (Delete)</font></a></h5><p><font style="color:rgb(0, 0, 0);">与字符串删除相关的方法有 4 个，它们分别是 </font><code>pop()</code><font style="color:rgb(0, 0, 0);">，</font><code>remove()</code><font style="color:rgb(0, 0, 0);">，</font><code>truncate()</code><font style="color:rgb(0, 0, 0);">，</font><code>clear()</code><font style="color:rgb(0, 0, 0);">。这四个方法仅适用于 </font><code>String</code>类型<br><code>pop</code><font style="color:rgb(0, 0, 0);"> —— 删除并返回字符串的最后一个字符</font></p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">fn</span> <span class="title function_">main</span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> <span class="keyword">mut </span><span class="variable">string_pop</span> = <span class="type">String</span>::<span class="title function_ invoke__">from</span>(<span class="string">&quot;rust pop 中文!&quot;</span>);</span><br><span class="line">    <span class="keyword">let</span> <span class="variable">p1</span> = string_pop.<span class="title function_ invoke__">pop</span>();</span><br><span class="line">    <span class="keyword">let</span> <span class="variable">p2</span> = string_pop.<span class="title function_ invoke__">pop</span>();</span><br><span class="line">    dbg!(p1);</span><br><span class="line">    dbg!(p2);</span><br><span class="line">    dbg!(string_pop);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>remove</code><font style="color:rgb(0, 0, 0);"> —— 删除并返回字符串中指定位置的字符</font></p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">fn</span> <span class="title function_">main</span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> <span class="keyword">mut </span><span class="variable">string_remove</span> = <span class="type">String</span>::<span class="title function_ invoke__">from</span>(<span class="string">&quot;测试remove方法&quot;</span>);</span><br><span class="line">    <span class="built_in">println!</span>(</span><br><span class="line">        <span class="string">&quot;string_remove 占 &#123;&#125; 个字节&quot;</span>,</span><br><span class="line">        std::mem::<span class="title function_ invoke__">size_of_val</span>(string_remove.<span class="title function_ invoke__">as_str</span>())</span><br><span class="line">    );</span><br><span class="line">    <span class="comment">// 删除第一个汉字</span></span><br><span class="line">    string_remove.<span class="title function_ invoke__">remove</span>(<span class="number">0</span>);</span><br><span class="line">    <span class="comment">// 下面代码会发生错误</span></span><br><span class="line">    <span class="comment">// string_remove.remove(1);</span></span><br><span class="line">    <span class="comment">// 直接删除第二个汉字</span></span><br><span class="line">    <span class="comment">// string_remove.remove(3);</span></span><br><span class="line">    dbg!(string_remove);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>truncate</code><font style="color:rgb(0, 0, 0);"> —— 删除字符串中从指定位置开始到结尾的全部字符</font></p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">fn</span> <span class="title function_">main</span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> <span class="keyword">mut </span><span class="variable">string_truncate</span> = <span class="type">String</span>::<span class="title function_ invoke__">from</span>(<span class="string">&quot;测试truncate&quot;</span>);</span><br><span class="line">    string_truncate.<span class="title function_ invoke__">truncate</span>(<span class="number">3</span>);</span><br><span class="line">    dbg!(string_truncate);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>clear</code><font style="color:rgb(0, 0, 0);"> —— 清空字符串</font></p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">fn</span> <span class="title function_">main</span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> <span class="keyword">mut </span><span class="variable">string_clear</span> = <span class="type">String</span>::<span class="title function_ invoke__">from</span>(<span class="string">&quot;string clear&quot;</span>);</span><br><span class="line">    string_clear.<span class="title function_ invoke__">clear</span>();</span><br><span class="line">    dbg!(string_clear);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="连接-Concatenate"><a href="#连接-Concatenate" class="headerlink" title="连接 (Concatenate)"></a><a target="_blank" rel="noopener" href="https://course.rs/basic/compound-type/string-slice.html#%E8%BF%9E%E6%8E%A5-concatenate"><font style="color:rgb(0, 0, 0);">连接 (Concatenate)</font></a></h5><h6 id="使用-或者-连接字符串"><a href="#使用-或者-连接字符串" class="headerlink" title="使用 + 或者 += 连接字符串"></a><font style="color:rgb(0, 0, 0);">使用 </font><code>+</code><font style="color:rgb(0, 0, 0);"> 或者 </font><code>+=</code><font style="color:rgb(0, 0, 0);"> 连接字符串</font></h6><figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">fn</span> <span class="title function_">main</span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> <span class="variable">string_append</span> = <span class="type">String</span>::<span class="title function_ invoke__">from</span>(<span class="string">&quot;hello &quot;</span>);</span><br><span class="line">    <span class="keyword">let</span> <span class="variable">string_rust</span> = <span class="type">String</span>::<span class="title function_ invoke__">from</span>(<span class="string">&quot;rust&quot;</span>);</span><br><span class="line">    <span class="comment">// &amp;string_rust会自动解引用为&amp;str</span></span><br><span class="line">    <span class="keyword">let</span> <span class="variable">result</span> = string_append + &amp;string_rust;</span><br><span class="line">    <span class="keyword">let</span> <span class="keyword">mut </span><span class="variable">result</span> = result + <span class="string">&quot;!&quot;</span>; <span class="comment">// `result + &quot;!&quot;` 中的 `result` 是不可变的</span></span><br><span class="line">    result += <span class="string">&quot;!!!&quot;</span>;</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;连接字符串 + -&gt; &#123;&#125;&quot;</span>, result);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h6 id="let-result-string-append-string-rust"><a href="#let-result-string-append-string-rust" class="headerlink" title="let result &#x3D; string_append + &amp;string_rust;"></a>let result &#x3D; string_append + &amp;string_rust;</h6><figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 这2行代码等价</span></span><br><span class="line"><span class="keyword">let</span> <span class="variable">result</span> = <span class="type">String</span>::<span class="title function_ invoke__">from</span>(<span class="string">&quot;hello &quot;</span>) + &amp;<span class="type">String</span>::<span class="title function_ invoke__">from</span>(<span class="string">&quot;rust&quot;</span>);</span><br><span class="line"><span class="comment">// 这个 + 的行为其实是：</span></span><br><span class="line"><span class="type">String</span>::<span class="title function_ invoke__">add</span>(<span class="keyword">self</span>, rhs: &amp;<span class="type">str</span>) <span class="punctuation">-&gt;</span> <span class="type">String</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>string_append</code> 被 <strong>移动（move）</strong></li>
+<li><code>&amp;string_rust</code> 会被自动解引用为 <code>&amp;str</code></li>
+<li>结果是一个新的 <code>String</code>，赋值给 <code>result</code></li>
+</ul>
+<h6 id="let-mut-result-result-“-”"><a href="#let-mut-result-result-“-”" class="headerlink" title="let mut result &#x3D; result + “!”;"></a>let mut result &#x3D; result + “!”;</h6><ul>
+<li>原来的 <code>result</code> 是不可变的</li>
+<li>你用 <code>+ &quot;!&quot;</code> 创建了一个新的 <code>String</code></li>
+<li>然后你把这个新的字符串用 <code>let mut result = ...</code><strong>重新声明为一个可变变量</strong></li>
+</ul>
+<p>❗ 这不是修改旧的 <code>result</code>，而是创建了新的变量（同名），并且是 <code>mut</code>。</p>
+<h6 id="result-“-”"><a href="#result-“-”" class="headerlink" title="result +&#x3D; “!!!”;"></a>result +&#x3D; “!!!”;</h6><ul>
+<li>这是对新的、可变的 <code>result</code> 做操作</li>
+<li><code>+=</code> 实际上调用的是 <code>String::push_str()</code> 方法</li>
+</ul>
+<h6 id="String-add-self-rhs-str-String"><a href="#String-add-self-rhs-str-String" class="headerlink" title="String::add(self, rhs: &amp;str) -&gt; String"></a>String::add(self, rhs: &amp;str) -&gt; String</h6><ol>
+<li>self 是 String（所有权），不是 &amp;String</li>
+<li>rhs 是 &amp;str，也就是右边你用 &amp;string_rust 是 ✅ 没问题的</li>
+</ol>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">fn</span> <span class="title function_">main</span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> <span class="variable">s1</span> = <span class="type">String</span>::<span class="title function_ invoke__">from</span>(<span class="string">&quot;hello,&quot;</span>);</span><br><span class="line">    <span class="keyword">let</span> <span class="variable">s2</span> = <span class="type">String</span>::<span class="title function_ invoke__">from</span>(<span class="string">&quot;world!&quot;</span>);</span><br><span class="line">    <span class="comment">// 在下句中，s1的所有权被转移走了，因此后面不能再使用s1</span></span><br><span class="line">    <span class="keyword">let</span> <span class="variable">s3</span> = s1 + &amp;s2;</span><br><span class="line">    <span class="built_in">assert_eq!</span>(s3,<span class="string">&quot;hello,world!&quot;</span>);</span><br><span class="line">    <span class="comment">// 下面的语句如果去掉注释，就会报错 ,s1的所有权已经转移到s3</span></span><br><span class="line">    <span class="comment">// println!(&quot;&#123;&#125;&quot;,s1);</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h6 id="使用-format-连接字符串"><a href="#使用-format-连接字符串" class="headerlink" title="使用 format! 连接字符串"></a><font style="color:rgb(0, 0, 0);">使用 </font><code>format!</code><font style="color:rgb(0, 0, 0);"> 连接字符串</font></h6><p><code>format!</code><font style="color:rgb(0, 0, 0);"> 这种方式适用于 </font><code>String</code><font style="color:rgb(0, 0, 0);"> 和 </font><code>&amp;str</code><font style="color:rgb(48, 25, 0);background-color:rgb(246, 247, 246);">,所有权不会转移</font></p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">fn</span> <span class="title function_">main</span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> <span class="variable">s1</span> = <span class="string">&quot;hello&quot;</span>;</span><br><span class="line">    <span class="keyword">let</span> <span class="variable">s2</span> = <span class="type">String</span>::<span class="title function_ invoke__">from</span>(<span class="string">&quot;rust&quot;</span>);</span><br><span class="line">    <span class="keyword">let</span> <span class="variable">s</span> = <span class="built_in">format!</span>(<span class="string">&quot;&#123;&#125; &#123;&#125;!&quot;</span>, s1, s2);</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;&#123;&#125;&quot;</span>, s);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="操作-UTF-8-字符串"><a href="#操作-UTF-8-字符串" class="headerlink" title="操作 UTF-8 字符串"></a><a target="_blank" rel="noopener" href="https://course.rs/basic/compound-type/string-slice.html#%E6%93%8D%E4%BD%9C-utf-8-%E5%AD%97%E7%AC%A6%E4%B8%B2"><font style="color:rgb(0, 0, 0);">操作 UTF-8 字符串</font></a></h4><h5 id="字符"><a href="#字符" class="headerlink" title="字符"></a><a target="_blank" rel="noopener" href="https://course.rs/basic/compound-type/string-slice.html#%E5%AD%97%E7%AC%A6"><font style="color:rgb(0, 0, 0);">字符</font></a></h5><p><font style="color:rgb(0, 0, 0);">如果你想要以 Unicode 字符的方式遍历字符串，最好的办法是使用 </font><code>chars</code><font style="color:rgb(0, 0, 0);"> 方法，例如：</font></p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> <span class="variable">c</span> <span class="keyword">in</span> <span class="string">&quot;中国人&quot;</span>.<span class="title function_ invoke__">chars</span>() &#123;</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;&#123;&#125;&quot;</span>, c);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="字节"><a href="#字节" class="headerlink" title="字节"></a><a target="_blank" rel="noopener" href="https://course.rs/basic/compound-type/string-slice.html#%E5%AD%97%E8%8A%82"><font style="color:rgb(0, 0, 0);">字节</font></a></h5><figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> <span class="variable">b</span> <span class="keyword">in</span> <span class="string">&quot;中国人&quot;</span>.<span class="title function_ invoke__">bytes</span>() &#123;</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;&#123;&#125;&quot;</span>, b);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="utf8-slice"><a href="#utf8-slice" class="headerlink" title="utf8_slice"></a><a target="_blank" rel="noopener" href="https://practice-zh.course.rs/collections/string.html#utf8_slice"><font style="color:rgb(0, 0, 0);">utf8_slice</font></a></h5><p><font style="color:rgb(0, 0, 0);">可以使用 </font><a target="_blank" rel="noopener" href="https://docs.rs/utf8_slice/1.0.0/utf8_slice/fn.slice.html"><font style="color:rgb(32, 96, 159);">utf8_slice</font></a><font style="color:rgb(0, 0, 0);"> 来按照字符的自然索引方式对 UTF-8 字符串进行切片访问，与之前的切片方式相比，它索引的是字符，而之前的方式索引的是字节.</font></p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">use</span> utf8_slice;</span><br><span class="line"><span class="keyword">fn</span> <span class="title function_">main</span>() &#123;</span><br><span class="line">   <span class="keyword">let</span> <span class="variable">s</span> = <span class="string">&quot;The 🚀 goes to the 🌑!&quot;</span>;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">let</span> <span class="variable">rocket</span> = utf8_slice::<span class="title function_ invoke__">slice</span>(s, <span class="number">4</span>, <span class="number">5</span>);</span><br><span class="line">   <span class="comment">// Will equal &quot;🚀&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/06/25/%E5%AD%97%E7%AC%A6%E4%B8%B2/" data-id="cmcfzbttt0009ggqw334v70uy" data-title="字符串" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Rust/" rel="tag">Rust</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2025/06/26/%E6%9E%9A%E4%B8%BE/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          枚举
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2025/06/24/%E6%95%B0%E7%BB%84%E5%88%87%E7%89%87/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">数组切片</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Rust/" rel="tag">Rust</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%85%B6%E4%BB%96/" rel="tag">其他</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Rust/" style="font-size: 20px;">Rust</a> <a href="/tags/%E5%85%B6%E4%BB%96/" style="font-size: 10px;">其他</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/06/">June 2025</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2025/06/28/%E6%A8%A1%E5%BC%8F%E5%8C%B9%E9%85%8D/">模式匹配</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/27/%E7%BB%93%E6%9E%84%E4%BD%93/">结构体</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/26/%E6%9E%9A%E4%B8%BE/">枚举</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/25/%E5%AD%97%E7%AC%A6%E4%B8%B2/">字符串</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/24/%E6%95%B0%E7%BB%84%E5%88%87%E7%89%87/">数组切片</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2025 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
