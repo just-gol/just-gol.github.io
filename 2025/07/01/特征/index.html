@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>特征 | Li</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Trait特征定义了一组可以被共享的行为，只要实现了特征，你就能使用这组行为;特征跟接口很类似 定义特征定义特征是把一些方法组合在一起，目的是定义一个实现某些目标所必需的行为的集合。 123pub trait Summary &#123;    fn summarize(&amp;self) -&gt; String;&#125;  trait 关键字来声明一个特征，Summary 是特征名。在大">
+<meta property="og:type" content="article">
+<meta property="og:title" content="特征">
+<meta property="og:url" content="http://example.com/2025/07/01/%E7%89%B9%E5%BE%81/index.html">
+<meta property="og:site_name" content="Li">
+<meta property="og:description" content="Trait特征定义了一组可以被共享的行为，只要实现了特征，你就能使用这组行为;特征跟接口很类似 定义特征定义特征是把一些方法组合在一起，目的是定义一个实现某些目标所必需的行为的集合。 123pub trait Summary &#123;    fn summarize(&amp;self) -&gt; String;&#125;  trait 关键字来声明一个特征，Summary 是特征名。在大">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2025-07-01T13:23:53.000Z">
+<meta property="article:modified_time" content="2025-07-01T13:33:32.998Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="Rust">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Li" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Li</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-特征" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/07/01/%E7%89%B9%E5%BE%81/" class="article-date">
+  <time class="dt-published" datetime="2025-07-01T13:23:53.000Z" itemprop="datePublished">2025-07-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      特征
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="Trait"><a href="#Trait" class="headerlink" title="Trait"></a>Trait</h3><p>特征定义了一组可以被共享的行为，只要实现了特征，你就能使用这组行为;<font style="color:rgb(0, 0, 0);">特征跟接口很类似</font></p>
+<h4 id="定义特征"><a href="#定义特征" class="headerlink" title="定义特征"></a><a target="_blank" rel="noopener" href="https://course.rs/basic/trait/trait.html#%E5%AE%9A%E4%B9%89%E7%89%B9%E5%BE%81"><font style="color:rgb(0, 0, 0);">定义特征</font></a></h4><p><strong><font style="color:rgb(0, 0, 0);">定义特征</font></strong><font style="color:rgb(0, 0, 0);">是把一些方法组合在一起，目的是定义一个实现某些目标所必需的行为的集合。</font></p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">pub</span> <span class="keyword">trait</span> <span class="title class_">Summary</span> &#123;</span><br><span class="line">    <span class="keyword">fn</span> <span class="title function_">summarize</span>(&amp;<span class="keyword">self</span>) <span class="punctuation">-&gt;</span> <span class="type">String</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>trait</code><font style="color:rgb(0, 0, 0);"> 关键字来声明一个特征，</font><code>Summary</code><font style="color:rgb(0, 0, 0);"> 是特征名。在大括号中定义了该特征的所有方法，在这个例子中是： </font><code>fn summarize(&amp;self) -&gt; String</code></p>
+<h4 id="为类型实现特征"><a href="#为类型实现特征" class="headerlink" title="为类型实现特征"></a><a target="_blank" rel="noopener" href="https://course.rs/basic/trait/trait.html#%E4%B8%BA%E7%B1%BB%E5%9E%8B%E5%AE%9E%E7%8E%B0%E7%89%B9%E5%BE%81"><font style="color:rgb(0, 0, 0);">为类型实现特征</font></a></h4><p><font style="color:rgb(0, 0, 0);">实现方法很像：</font><code>impl Summary for Post</code><font style="color:rgb(0, 0, 0);">，读作“为 </font><code>Post</code><font style="color:rgb(0, 0, 0);"> 类型实现 </font><code>Summary</code><font style="color:rgb(0, 0, 0);"> 特征”，然后在 </font><code>impl</code><font style="color:rgb(0, 0, 0);"> 的花括号中实现该特征的具体方法</font></p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">pub</span> <span class="keyword">trait</span> <span class="title class_">Summary</span> &#123;</span><br><span class="line">    <span class="keyword">fn</span> <span class="title function_">summarize</span>(&amp;<span class="keyword">self</span>) <span class="punctuation">-&gt;</span> <span class="type">String</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">pub</span> <span class="keyword">struct</span> <span class="title class_">Post</span> &#123;</span><br><span class="line">    <span class="keyword">pub</span> title: <span class="type">String</span>, <span class="comment">// 标题</span></span><br><span class="line">    <span class="keyword">pub</span> author: <span class="type">String</span>, <span class="comment">// 作者</span></span><br><span class="line">    <span class="keyword">pub</span> content: <span class="type">String</span>, <span class="comment">// 内容</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">impl</span> <span class="title class_">Summary</span> <span class="keyword">for</span> <span class="title class_">Post</span> &#123;</span><br><span class="line">    <span class="keyword">fn</span> <span class="title function_">summarize</span>(&amp;<span class="keyword">self</span>) <span class="punctuation">-&gt;</span> <span class="type">String</span> &#123;</span><br><span class="line">        <span class="built_in">format!</span>(<span class="string">&quot;文章&#123;&#125;, 作者是&#123;&#125;&quot;</span>, <span class="keyword">self</span>.title, <span class="keyword">self</span>.author)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">pub</span> <span class="keyword">struct</span> <span class="title class_">Weibo</span> &#123;</span><br><span class="line">    <span class="keyword">pub</span> username: <span class="type">String</span>,</span><br><span class="line">    <span class="keyword">pub</span> content: <span class="type">String</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">impl</span> <span class="title class_">Summary</span> <span class="keyword">for</span> <span class="title class_">Weibo</span> &#123;</span><br><span class="line">    <span class="keyword">fn</span> <span class="title function_">summarize</span>(&amp;<span class="keyword">self</span>) <span class="punctuation">-&gt;</span> <span class="type">String</span> &#123;</span><br><span class="line">        <span class="built_in">format!</span>(<span class="string">&quot;&#123;&#125;发表了微博&#123;&#125;&quot;</span>, <span class="keyword">self</span>.username, <span class="keyword">self</span>.content)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">fn</span> <span class="title function_">main</span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> <span class="variable">post</span> = Post&#123;title: <span class="string">&quot;Rust语言简介&quot;</span>.<span class="title function_ invoke__">to_string</span>(),author: <span class="string">&quot;Sunface&quot;</span>.<span class="title function_ invoke__">to_string</span>(), content: <span class="string">&quot;Rust棒极了!&quot;</span>.<span class="title function_ invoke__">to_string</span>()&#125;;</span><br><span class="line">    <span class="keyword">let</span> <span class="variable">weibo</span> = Weibo&#123;username: <span class="string">&quot;sunface&quot;</span>.<span class="title function_ invoke__">to_string</span>(),content: <span class="string">&quot;好像微博没Tweet好用&quot;</span>.<span class="title function_ invoke__">to_string</span>()&#125;;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;&#123;&#125;&quot;</span>,post.<span class="title function_ invoke__">summarize</span>());</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;&#123;&#125;&quot;</span>,weibo.<span class="title function_ invoke__">summarize</span>());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="默认实现"><a href="#默认实现" class="headerlink" title="默认实现"></a>默认实现</h4><p>默认实现的方法，这样其它类型无需再实现该方法，或者也可以选择重写该方法</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">pub</span> <span class="keyword">trait</span> <span class="title class_">Summary</span> &#123;</span><br><span class="line">    <span class="keyword">fn</span> <span class="title function_">summarize</span>(&amp;<span class="keyword">self</span>) <span class="punctuation">-&gt;</span> <span class="type">String</span> &#123;</span><br><span class="line">        <span class="type">String</span>::<span class="title function_ invoke__">from</span>(<span class="string">&quot;(Read more...)&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果一个方法实现了Summary,但是没有进行重写,使用默认实现;如果重写就使用重写方法</p>
+<h4 id="使用特征作为函数参数"><a href="#使用特征作为函数参数" class="headerlink" title="使用特征作为函数参数"></a><a target="_blank" rel="noopener" href="https://course.rs/basic/trait/trait.html#%E4%BD%BF%E7%94%A8%E7%89%B9%E5%BE%81%E4%BD%9C%E4%B8%BA%E5%87%BD%E6%95%B0%E5%8F%82%E6%95%B0"><font style="color:rgb(0, 0, 0);">使用特征作为函数参数</font></a></h4><figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">pub</span> <span class="keyword">fn</span> <span class="title function_">notify</span>(item: &amp;<span class="keyword">impl</span> <span class="title class_">Summary</span>) &#123;</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;Breaking news! &#123;&#125;&quot;</span>, item.<span class="title function_ invoke__">summarize</span>());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>例如: impl Summary for A; 可以使用 notify(&amp;A)进行调用</p>
+<h4 id="特征约束"><a href="#特征约束" class="headerlink" title="特征约束"></a>特征约束</h4><figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">pub</span> <span class="keyword">fn</span> <span class="title function_">notify</span>&lt;T: Summary&gt;(item1: &amp;T, item2: &amp;T) &#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<p><font style="color:rgb(0, 0, 0);">泛型类型 </font><code>T</code><font style="color:rgb(0, 0, 0);"> 说明了 </font><code>item1</code><font style="color:rgb(0, 0, 0);"> 和 </font><code>item2</code><font style="color:rgb(0, 0, 0);"> 必须拥有同样的类型，同时 </font><code>T: Summary</code><font style="color:rgb(0, 0, 0);"> 说明了 </font><code>T</code><font style="color:rgb(0, 0, 0);"> 必须实现 </font><code>Summary</code><font style="color:rgb(0, 0, 0);"> 特征。</font></p>
+<h4 id="多重约束"><a href="#多重约束" class="headerlink" title="多重约束"></a><a target="_blank" rel="noopener" href="https://course.rs/basic/trait/trait.html#%E5%A4%9A%E9%87%8D%E7%BA%A6%E6%9D%9F"><font style="color:rgb(0, 0, 0);">多重约束</font></a></h4><figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">pub</span> <span class="keyword">fn</span> <span class="title function_">notify</span>(item: &amp;(<span class="keyword">impl</span> <span class="title class_">Summary</span> + Display)) &#123;&#125;</span><br><span class="line"><span class="comment">// 个人更喜欢下面这种写法</span></span><br><span class="line"><span class="keyword">pub</span> <span class="keyword">fn</span> <span class="title function_">notify</span>&lt;T: Summary + Display&gt;(item:&amp;T)&#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>notify</code> 函数接收一个<strong>引用类型参数</strong>，这个参数的类型必须同时实现了 <code>Summary</code> 和 <code>Display</code> 这两个 trait。  </p>
+<h5 id="impl-Summary-Display-是什么意思"><a href="#impl-Summary-Display-是什么意思" class="headerlink" title="(impl Summary + Display) 是什么意思"></a>(impl Summary + Display) 是什么意思</h5><p>表示类型必须同时实现：</p>
+<ul>
+<li><code>Summary</code>（你自定义的 trait）</li>
+<li><code>Display</code>（Rust 标准库里的格式化 trait，支持 <code>&#123;&#125;</code> 打印）</li>
+</ul>
+<p>比如，这样的类型才能传进去：</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">News</span> &#123;&#125;</span><br><span class="line"><span class="keyword">impl</span> <span class="title class_">Summary</span> <span class="keyword">for</span> <span class="title class_">News</span> &#123; ... &#125;</span><br><span class="line"><span class="keyword">impl</span> <span class="title class_">Display</span> <span class="keyword">for</span> <span class="title class_">News</span> &#123; ... &#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_ invoke__">notify</span>(&amp;news); <span class="comment">// ✅ 满足约束</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="什么时候用-合并多个-trait"><a href="#什么时候用-合并多个-trait" class="headerlink" title="什么时候用 + 合并多个 trait"></a>什么时候用 <code>+</code> 合并多个 trait</h5><p> 当你希望函数参数同时满足多个 trait 的约束（比如可以 <code>.sum()</code> 又可以 <code>&#123;&#125;</code> 打印），就需要用 <code>+</code></p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">use</span> std::fmt::Display;</span><br><span class="line"></span><br><span class="line"><span class="keyword">pub</span> <span class="keyword">trait</span> <span class="title class_">Summary</span> &#123;</span><br><span class="line">    <span class="keyword">fn</span> <span class="title function_">sum</span>(&amp;<span class="keyword">self</span>) <span class="punctuation">-&gt;</span> <span class="type">String</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">pub</span> <span class="keyword">fn</span> <span class="title function_">notify</span>(item: &amp;(<span class="keyword">impl</span> <span class="title class_">Summary</span> + Display)) &#123;</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;&#123;&#125; - &#123;&#125;&quot;</span>, item, item.<span class="title function_ invoke__">sum</span>());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>写法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>fn notify(item: &amp;impl Summary)</code></td>
+<td>接收实现了 <code>Summary</code> 的引用</td>
+</tr>
+<tr>
+<td><code>fn notify(item: &amp;impl Summary + Display)</code></td>
+<td>接收实现了 <code>Summary</code> <strong>和</strong> <code>Display</code> 的引用</td>
+</tr>
+<tr>
+<td><code>fn notify&lt;T: Summary&gt;(item: &amp;T)</code></td>
+<td>等价于第 1 种，写法更通用</td>
+</tr>
+<tr>
+<td><code>fn notify&lt;T: Summary + Display&gt;(item: &amp;T)</code></td>
+<td>等价于第 2 种，更灵活</td>
+</tr>
+</tbody></table>
+<h4 id="Where-约束"><a href="#Where-约束" class="headerlink" title="Where 约束"></a><a target="_blank" rel="noopener" href="https://course.rs/basic/trait/trait.html#where-%E7%BA%A6%E6%9D%9F"><font style="color:rgb(0, 0, 0);">Where 约束</font></a></h4><h4 id="语法对比"><a href="#语法对比" class="headerlink" title="语法对比"></a>语法对比</h4><figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 普通写法：所有约束都写在 &lt;&gt; 中</span></span><br><span class="line"><span class="keyword">fn</span> <span class="title function_">example</span>&lt;T: TraitA + TraitB, U: TraitC&gt;(t: T, u: U) &#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// where 写法：约束单独写在 where 里</span></span><br><span class="line"><span class="keyword">fn</span> <span class="title function_">example</span>&lt;T, U&gt;(t: T, u: U)</span><br><span class="line"><span class="keyword">where</span></span><br><span class="line">    T: TraitA + TraitB,</span><br><span class="line">    U: TraitC,</span><br><span class="line">&#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<p> 效果一样，但 <code>where</code> 方式在约束很多时更清晰！  </p>
+<h5 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h5><figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">use</span> std::fmt::Display;</span><br><span class="line"></span><br><span class="line"><span class="keyword">fn</span> <span class="title function_">print_pair</span>&lt;T, U&gt;(x: T, y: U)</span><br><span class="line"><span class="keyword">where</span></span><br><span class="line">    T: Display,</span><br><span class="line">    U: Display,</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;x: &#123;&#125;, y: &#123;&#125;&quot;</span>, x, y);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="函数返回中的impl-Trait"><a href="#函数返回中的impl-Trait" class="headerlink" title="函数返回中的impl Trait"></a><a target="_blank" rel="noopener" href="https://course.rs/basic/trait/trait.html#%E5%87%BD%E6%95%B0%E8%BF%94%E5%9B%9E%E4%B8%AD%E7%9A%84-impl-trait"><font style="color:rgb(0, 0, 0);">函数返回中的impl Trait</font></a></h4><ul>
+<li>返回的类型太复杂（比如闭包、迭代器）</li>
+<li>不想暴露类型细节</li>
+<li>更清爽、简洁</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>传统写法</th>
+<th>impl Trait 写法</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>-&gt; String</code></td>
+<td><code>-&gt; impl Display</code></td>
+<td>不告诉你是 String，只说能被打印</td>
+</tr>
+<tr>
+<td><code>-&gt; Vec&lt;i32&gt;</code></td>
+<td><code>-&gt; impl Iterator&lt;Item = i32&gt;</code></td>
+<td>不告诉你是 Vec，只说能一个个取出来</td>
+</tr>
+<tr>
+<td><code>-&gt; MyClosureType</code></td>
+<td><code>-&gt; impl Fn(i32) -&gt; i32</code></td>
+<td>不告诉你闭包长啥样，只说能执行它</td>
+</tr>
+</tbody></table>
+<h3 id="特征对象"><a href="#特征对象" class="headerlink" title="特征对象"></a>特征对象</h3><p>特征对象（trait object）是“在运行时”决定类型的方式，允许你通过 <code>**Box&lt;dyn Trait&gt;**</code> 之类的方式来处理不同类型的值，只要它们都实现了某个 trait(类似于java中的多态)。  </p>
+<p>Rust 默认是<strong>静态分发</strong>（编译时决定类型），这有利于性能，但限制了某些灵活性，比如：  </p>
+<p>场景：你想让一个变量，能装下多种不同类型的对象，只要它们都有相同的功能（实现了同一个 trait）</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">trait</span> <span class="title class_">Animal</span> &#123;</span><br><span class="line">    <span class="keyword">fn</span> <span class="title function_">speak</span>(&amp;<span class="keyword">self</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Dog</span>;</span><br><span class="line"><span class="keyword">impl</span> <span class="title class_">Animal</span> <span class="keyword">for</span> <span class="title class_">Dog</span> &#123;</span><br><span class="line">    <span class="keyword">fn</span> <span class="title function_">speak</span>(&amp;<span class="keyword">self</span>) &#123; <span class="built_in">println!</span>(<span class="string">&quot;汪汪！&quot;</span>); &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Cat</span>;</span><br><span class="line"><span class="keyword">impl</span> <span class="title class_">Animal</span> <span class="keyword">for</span> <span class="title class_">Cat</span> &#123;</span><br><span class="line">    <span class="keyword">fn</span> <span class="title function_">speak</span>(&amp;<span class="keyword">self</span>) &#123; <span class="built_in">println!</span>(<span class="string">&quot;喵喵！&quot;</span>); &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> <span class="variable">zoo</span> = <span class="built_in">vec!</span>[Dog, Cat]; <span class="comment">// ❌ 编译错误，不同类型不能进同一个 Vec</span></span><br></pre></td></tr></table></figure>
+
+<p> 使用特征对象解决 </p>
+<p><code>Box&lt;dyn Animal&gt;</code> 就是一个 <strong>特征对象</strong>。<br>意思是：“我不知道你具体是 Dog 还是 Cat，反正你能 <code>speak()</code> 就行”。  </p>
+<h4 id="特征对象的使用条件"><a href="#特征对象的使用条件" class="headerlink" title="特征对象的使用条件"></a>特征对象的使用条件</h4><p>只有 <strong>trait</strong> 满足以下条件才能被做成特征对象：</p>
+<h5 id="必须满足"><a href="#必须满足" class="headerlink" title="必须满足"></a>必须满足</h5><ul>
+<li>trait 不能有泛型参数</li>
+<li>trait 方法不能使用 <code>Self</code> 作为返回值（除非配合 <code>Box&lt;Self&gt;</code>）</li>
+<li>trait 要支持 <strong>对象安全（object safe）</strong></li>
+</ul>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">trait</span> <span class="title class_">Animal</span> &#123;</span><br><span class="line">    <span class="keyword">fn</span> <span class="title function_">speak</span>(&amp;<span class="keyword">self</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Dog</span>;</span><br><span class="line"><span class="keyword">impl</span> <span class="title class_">Animal</span> <span class="keyword">for</span> <span class="title class_">Dog</span> &#123;</span><br><span class="line">    <span class="keyword">fn</span> <span class="title function_">speak</span>(&amp;<span class="keyword">self</span>) &#123; <span class="built_in">println!</span>(<span class="string">&quot;Dog says: 汪汪！&quot;</span>); &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Cat</span>;</span><br><span class="line"><span class="keyword">impl</span> <span class="title class_">Animal</span> <span class="keyword">for</span> <span class="title class_">Cat</span> &#123;</span><br><span class="line">    <span class="keyword">fn</span> <span class="title function_">speak</span>(&amp;<span class="keyword">self</span>) &#123; <span class="built_in">println!</span>(<span class="string">&quot;Cat says: 喵喵！&quot;</span>); &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">fn</span> <span class="title function_">main</span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> <span class="variable">zoo</span>: <span class="type">Vec</span>&lt;<span class="type">Box</span>&lt;<span class="keyword">dyn</span> Animal&gt;&gt; = <span class="built_in">vec!</span>[</span><br><span class="line">        <span class="type">Box</span>::<span class="title function_ invoke__">new</span>(Dog),</span><br><span class="line">        <span class="type">Box</span>::<span class="title function_ invoke__">new</span>(Cat),</span><br><span class="line">    ];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> <span class="variable">animal</span> <span class="keyword">in</span> zoo &#123;</span><br><span class="line">        animal.<span class="title function_ invoke__">speak</span>(); <span class="comment">// 动态调用</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="dyn"><a href="#dyn" class="headerlink" title="dyn"></a>dyn</h4><p><code>**dyn**</code> 是 Rust 中的关键词，意思是：“我要使用一个<strong>动态分发的 trait 对象</strong>”。</p>
+<p><code>dyn Trait</code> 是动态大小类型（DST），不能直接使用，必须用 <code>Box</code>、<code>&amp;</code> 或 <code>Rc</code> 等包起来。</p>
+<table>
+<thead>
+<tr>
+<th>包装方式</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>Box&lt;dyn Trait&gt;</code></td>
+<td>放到堆上，适合所有权转移</td>
+</tr>
+<tr>
+<td><code>&amp;dyn Trait</code></td>
+<td>借用引用，适合只读调用</td>
+</tr>
+<tr>
+<td><code>Rc&lt;dyn Trait&gt;</code></td>
+<td>多所有权，适合多处共享使用</td>
+</tr>
+<tr>
+<td><code>Arc&lt;dyn Trait&gt;</code></td>
+<td>多线程共享</td>
+</tr>
+</tbody></table>
+<h5 id="类比理解（📦装箱思想）"><a href="#类比理解（📦装箱思想）" class="headerlink" title="类比理解（📦装箱思想）"></a>类比理解（📦装箱思想）</h5><p>你可以把 <code>dyn Trait</code> 理解成一个“尺寸不定的物品”，Rust 不允许你直接拿在手上，必须：</p>
+<ul>
+<li>用一个盒子（<code>Box</code>）装起来，放堆上</li>
+<li>或者用引用（<code>&amp;</code>）指向它</li>
+</ul>
+<p>否则编译器无法分配空间，不知道该怎么处理它。</p>
+<h4 id="Self-与-self"><a href="#Self-与-self" class="headerlink" title="Self 与 self"></a><a target="_blank" rel="noopener" href="https://course.rs/basic/trait/trait-object.html#self-%E4%B8%8E-self"><font style="color:rgb(0, 0, 0);">Self 与 self</font></a></h4><figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">trait</span> <span class="title class_">Draw</span> &#123;</span><br><span class="line">    <span class="keyword">fn</span> <span class="title function_">draw</span>(&amp;<span class="keyword">self</span>) <span class="punctuation">-&gt;</span> <span class="keyword">Self</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#[derive(Clone)]</span></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Button</span>;</span><br><span class="line"><span class="keyword">impl</span> <span class="title class_">Draw</span> <span class="keyword">for</span> <span class="title class_">Button</span> &#123;</span><br><span class="line">    <span class="keyword">fn</span> <span class="title function_">draw</span>(&amp;<span class="keyword">self</span>) <span class="punctuation">-&gt;</span> <span class="keyword">Self</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">self</span>.<span class="title function_ invoke__">clone</span>()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">fn</span> <span class="title function_">main</span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> <span class="variable">button</span> = Button;</span><br><span class="line">    <span class="keyword">let</span> <span class="variable">newb</span> = button.<span class="title function_ invoke__">draw</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>self</code><font style="color:rgb(0, 0, 0);">指代的就是当前的实例对象，也就是 </font><code>button.draw()</code><font style="color:rgb(0, 0, 0);"> 中的 </font><code>button</code><font style="color:rgb(0, 0, 0);"> 实例，</font><code>Self</code><font style="color:rgb(0, 0, 0);"> 则指代的是 </font><code>Button</code><font style="color:rgb(0, 0, 0);"> 类型</font></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/07/01/%E7%89%B9%E5%BE%81/" data-id="cmckkof2b000oqrqw4swv3ed1" data-title="特征" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Rust/" rel="tag">Rust</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2025/06/29/%E6%96%B9%E6%B3%95/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">方法</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Rust/" rel="tag">Rust</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%85%B6%E4%BB%96/" rel="tag">其他</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Rust/" style="font-size: 20px;">Rust</a> <a href="/tags/%E5%85%B6%E4%BB%96/" style="font-size: 10px;">其他</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/07/">July 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/06/">June 2025</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2025/07/01/%E7%89%B9%E5%BE%81/">特征</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/29/%E6%96%B9%E6%B3%95/">方法</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/28/%E6%A8%A1%E5%BC%8F%E5%8C%B9%E9%85%8D/">模式匹配</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/27/%E7%BB%93%E6%9E%84%E4%BD%93/">结构体</a>
+          </li>
+        
+          <li>
+            <a href="/2025/06/26/%E6%9E%9A%E4%B8%BE/">枚举</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2025 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
