@@ -71,6 +71,106 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-集合" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/07/02/%E9%9B%86%E5%90%88/" class="article-date">
+  <time class="dt-published" datetime="2025-07-02T08:42:13.000Z" itemprop="datePublished">2025-07-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2025/07/02/%E9%9B%86%E5%90%88/">集合</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="动态数组-Vector"><a href="#动态数组-Vector" class="headerlink" title="动态数组 Vector"></a><a target="_blank" rel="noopener" href="https://doc.rust-lang.org/std/vec/struct.Vec.html#method.push">动态数组 Vector</a></h3><h4 id="创建动态数组"><a href="#创建动态数组" class="headerlink" title="创建动态数组"></a><a target="_blank" rel="noopener" href="https://course.rs/basic/collections/vector.html#%E5%88%9B%E5%BB%BA%E5%8A%A8%E6%80%81%E6%95%B0%E7%BB%84"><font style="color:rgb(0, 0, 0);">创建动态数组</font></a></h4><h5 id="Vec-new"><a href="#Vec-new" class="headerlink" title="Vec::new"></a><a target="_blank" rel="noopener" href="https://course.rs/basic/collections/vector.html#vecnew"><font style="color:rgb(0, 0, 0);">Vec::new</font></a></h5><figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="variable">v</span>: <span class="type">Vec</span>&lt;<span class="type">i32</span>&gt; = <span class="type">Vec</span>::<span class="title function_ invoke__">new</span>();</span><br></pre></td></tr></table></figure>
+
+<h5 id="Vec-with-capacity-capacity-创建定长的数组"><a href="#Vec-with-capacity-capacity-创建定长的数组" class="headerlink" title="Vec::with_capacity(capacity)创建定长的数组"></a>Vec::with_capacity(capacity)创建定长的数组</h5><figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="keyword">mut </span><span class="variable">v</span> = <span class="type">Vec</span>::<span class="title function_ invoke__">with_capacity</span>(<span class="number">10</span>);</span><br><span class="line">v.<span class="title function_ invoke__">push</span>(<span class="number">1</span>);</span><br></pre></td></tr></table></figure>
+
+<h5 id="vec"><a href="#vec" class="headerlink" title="vec![]"></a><a target="_blank" rel="noopener" href="https://course.rs/basic/collections/vector.html#vec"><font style="color:rgb(0, 0, 0);">vec![]</font></a></h5><figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="variable">x</span> = <span class="built_in">vec!</span>[<span class="number">1</span>;<span class="number">5</span>];</span><br><span class="line"><span class="keyword">for</span> <span class="variable">i</span> <span class="keyword">in</span> x.<span class="title function_ invoke__">iter</span>()&#123;</span><br><span class="line">   <span class="built_in">println!</span>(<span class="string">&quot;&#123;&#125;&quot;</span>,i);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>对比项</th>
+<th><code>Vec::new()</code></th>
+<th><code>vec![]</code> 宏</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>类型推导</td>
+<td><strong>需要显式指定类型</strong>或上下文推导</td>
+<td><strong>自动根据内容推导类型</strong></td>
+</tr>
+<tr>
+<td>初始元素</td>
+<td>不支持初始化内容</td>
+<td>✅ 支持一次性填充多个元素</td>
+</tr>
+<tr>
+<td>用法语法</td>
+<td>是函数（<code>fn new() -&gt; Vec&lt;T&gt;</code>）</td>
+<td>是宏（<code>macro_rules!</code>）</td>
+</tr>
+<tr>
+<td>性能</td>
+<td>相同，都生成空向量（或相同初始化）</td>
+<td>没有明显性能差异</td>
+</tr>
+</tbody></table>
+<p> 想空用 <code>new</code>，想填用 <code>vec![]</code>，想简用宏  </p>
+<h4 id="从-Vector-中读取元素"><a href="#从-Vector-中读取元素" class="headerlink" title="从 Vector 中读取元素"></a><a target="_blank" rel="noopener" href="https://course.rs/basic/collections/vector.html#%E4%BB%8E-vector-%E4%B8%AD%E8%AF%BB%E5%8F%96%E5%85%83%E7%B4%A0"><font style="color:rgb(0, 0, 0);">从 Vector 中读取元素</font></a></h4><figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">use</span> std::vec;</span><br><span class="line"></span><br><span class="line"><span class="keyword">fn</span> <span class="title function_">main</span>()&#123;</span><br><span class="line">    <span class="keyword">let</span> <span class="variable">v</span>= <span class="built_in">vec!</span>[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</span><br><span class="line">    <span class="keyword">match</span> v.<span class="title function_ invoke__">get</span>(<span class="number">0</span>) &#123;</span><br><span class="line">        <span class="title function_ invoke__">Some</span>(b) =&gt; <span class="built_in">println!</span>(<span class="string">&quot;&#123;&#125;&quot;</span>,b),</span><br><span class="line">        <span class="literal">None</span> =&gt; <span class="built_in">println!</span>(<span class="string">&quot;None&quot;</span>),</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">let</span> <span class="variable">Some</span>(b) = v.<span class="title function_ invoke__">get</span>(<span class="number">0</span>) &#123;</span><br><span class="line">        <span class="built_in">println!</span>(<span class="string">&quot;&#123;&#125;&quot;</span>,b);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>get和通过下标获取元素的区别是:get索引越界不会报错返回的是option</p>
+<h3 id="KV-存储-HashMap"><a href="#KV-存储-HashMap" class="headerlink" title="KV 存储 HashMap"></a><a target="_blank" rel="noopener" href="https://course.rs/basic/collections/hashmap.html#kv-%E5%AD%98%E5%82%A8-hashmap"><font style="color:rgb(0, 0, 0);">KV 存储 HashMap</font></a></h3><h4 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h4><figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">use</span> std::collections::HashMap;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建一个HashMap，用于存储宝石种类和对应的数量</span></span><br><span class="line"><span class="keyword">let</span> <span class="keyword">mut </span><span class="variable">my_gems</span> = HashMap::<span class="title function_ invoke__">new</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 将宝石类型和对应的数量写入表中</span></span><br><span class="line">my_gems.<span class="title function_ invoke__">insert</span>(<span class="string">&quot;红宝石&quot;</span>, <span class="number">1</span>);</span><br><span class="line">my_gems.<span class="title function_ invoke__">insert</span>(<span class="string">&quot;蓝宝石&quot;</span>, <span class="number">2</span>);</span><br><span class="line">my_gems.<span class="title function_ invoke__">insert</span>(<span class="string">&quot;河边捡的误以为是宝石的破石头&quot;</span>, <span class="number">18</span>);</span><br></pre></td></tr></table></figure>
+
+<h4 id="所有权转移"><a href="#所有权转移" class="headerlink" title="所有权转移"></a>所有权转移</h4><figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">fn</span> <span class="title function_">main</span>() &#123;</span><br><span class="line">    <span class="keyword">use</span> std::collections::HashMap;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">let</span> <span class="variable">name</span> = <span class="type">String</span>::<span class="title function_ invoke__">from</span>(<span class="string">&quot;Sunface&quot;</span>);</span><br><span class="line">    <span class="keyword">let</span> <span class="variable">age</span> = <span class="number">18</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">let</span> <span class="keyword">mut </span><span class="variable">handsome_boys</span> = HashMap::<span class="title function_ invoke__">new</span>();</span><br><span class="line">    handsome_boys.<span class="title function_ invoke__">insert</span>(name, age);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;因为过于无耻，&#123;&#125;已经被从帅气男孩名单中除名&quot;</span>, name);</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;还有，他的真实年龄远远不止&#123;&#125;岁&quot;</span>, age);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="查询-HashMap"><a href="#查询-HashMap" class="headerlink" title="查询 HashMap"></a><a target="_blank" rel="noopener" href="https://course.rs/basic/collections/hashmap.html#%E6%9F%A5%E8%AF%A2-hashmap"><font style="color:rgb(0, 0, 0);">查询 HashMap</font></a></h4><figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="keyword">mut </span><span class="variable">scores</span> = HashMap::<span class="title function_ invoke__">new</span>();</span><br><span class="line"><span class="keyword">let</span> <span class="variable">key</span> =  scores.<span class="title function_ invoke__">get</span>(<span class="string">&quot;key&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>优雅的获取k-v</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="variable">score</span>: <span class="type">i32</span> = scores.<span class="title function_ invoke__">get</span>(&amp;team_name).<span class="title function_ invoke__">copied</span>().<span class="title function_ invoke__">unwrap_or</span>(<span class="number">0</span>);</span><br></pre></td></tr></table></figure>
+
+<p>完整流程：</p>
+<ol>
+<li><code>scores.get(&amp;team_name)</code> → <code>Option&lt;&amp;i32&gt;</code></li>
+<li><code>.copied()</code> → <code>Option&lt;i32&gt;</code></li>
+<li><code>.unwrap_or(0)</code> → 若存在值就返回，否则返回默认的 <code>0</code></li>
+</ol>
+<h4 id="三方库-Hash-库"><a href="#三方库-Hash-库" class="headerlink" title="三方库 Hash 库"></a><a target="_blank" rel="noopener" href="https://practice-zh.course.rs/collections/hashmap.html#%E4%B8%89%E6%96%B9%E5%BA%93-hash-%E5%BA%93"><font style="color:rgb(0, 0, 0);">三方库 Hash 库</font></a></h4><figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">use</span> std::collections::HashMap;</span><br><span class="line"><span class="keyword">use</span> std::hash::BuildHasherDefault;</span><br><span class="line"><span class="keyword">use</span> twox_hash::XxHash64;</span><br><span class="line"><span class="keyword">fn</span> <span class="title function_">main</span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> <span class="keyword">mut </span><span class="variable">hash</span>:HashMap&lt;_, _,BuildHasherDefault&lt;XxHash64&gt;&gt;=<span class="built_in">Default</span>::<span class="title function_ invoke__">default</span>();</span><br><span class="line">    hash.<span class="title function_ invoke__">insert</span>(<span class="number">1</span>, <span class="string">&quot;one&quot;</span>);</span><br><span class="line">    <span class="built_in">assert_eq!</span>(hash.<span class="title function_ invoke__">get</span>(&amp;<span class="number">1</span>), <span class="title function_ invoke__">Some</span>(&amp;<span class="string">&quot;one&quot;</span>))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Cargo.toml 依赖</p>
+<figure class="highlight toml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[dependencies]</span></span><br><span class="line"><span class="attr">twox-hash</span>=<span class="string">&quot;2.1.0&quot;</span></span><br></pre></td></tr></table></figure>
+
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/07/02/%E9%9B%86%E5%90%88/" data-id="cmclplgtg000u6kqwg9nf2cia" data-title="集合" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Rust/" rel="tag">Rust</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-特征" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2025/07/01/%E7%89%B9%E5%BE%81/" class="article-date">
@@ -237,7 +337,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/07/01/%E7%89%B9%E5%BE%81/" data-id="cmckkwm09000qf6qw6cl019an" data-title="特征" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/07/01/%E7%89%B9%E5%BE%81/" data-id="cmclplgtf000q6kqw5c7m0lfo" data-title="特征" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -354,7 +454,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/06/30/%E6%B3%9B%E5%9E%8B/" data-id="cmckkwm07000mf6qw44yobujv" data-title="泛型" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/06/30/%E6%B3%9B%E5%9E%8B/" data-id="cmclplgte000m6kqw1lkme27f" data-title="泛型" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -471,7 +571,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/06/29/%E6%96%B9%E6%B3%95/" data-id="cmckkwm04000gf6qwdom74mfd" data-title="方法" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/06/29/%E6%96%B9%E6%B3%95/" data-id="cmclplgtc000g6kqwdl5ycgql" data-title="方法" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -661,7 +761,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/06/28/%E6%A8%A1%E5%BC%8F%E5%8C%B9%E9%85%8D/" data-id="cmckkwm06000kf6qwak8la27k" data-title="模式匹配" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/06/28/%E6%A8%A1%E5%BC%8F%E5%8C%B9%E9%85%8D/" data-id="cmclplgtd000k6kqwand6fgys" data-title="模式匹配" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -783,7 +883,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/06/27/%E7%BB%93%E6%9E%84%E4%BD%93/" data-id="cmckkwm09000sf6qwez8s4pfp" data-title="结构体" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/06/27/%E7%BB%93%E6%9E%84%E4%BD%93/" data-id="cmclplgtf000s6kqw5h2129np" data-title="结构体" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -889,7 +989,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/06/26/%E6%9E%9A%E4%B8%BE/" data-id="cmckkwm05000if6qw0s5l45az" data-title="枚举" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/06/26/%E6%9E%9A%E4%B8%BE/" data-id="cmclplgtd000i6kqwgu6ebqum" data-title="枚举" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -1011,7 +1111,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/06/25/%E5%AD%97%E7%AC%A6%E4%B8%B2/" data-id="cmckkwlzz0009f6qw0c7v45md" data-title="字符串" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/06/25/%E5%AD%97%E7%AC%A6%E4%B8%B2/" data-id="cmclplgt900096kqweu5nbt3b" data-title="字符串" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -1067,7 +1167,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/06/24/%E6%95%B0%E7%BB%84%E5%88%87%E7%89%87/" data-id="cmckkwm02000ef6qwgbm296gw" data-title="数组切片" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/06/24/%E6%95%B0%E7%BB%84%E5%88%87%E7%89%87/" data-id="cmclplgtb000e6kqw47dj2jhz" data-title="数组切片" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -1398,318 +1498,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/06/23/%E6%89%80%E6%9C%89%E6%9D%83%E5%92%8C%E5%80%9F%E7%94%A8/" data-id="cmckkwm00000bf6qw6j837v8t" data-title="所有权和借用" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Rust/" rel="tag">Rust</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-基础类型" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2025/06/22/%E5%9F%BA%E7%A1%80%E7%B1%BB%E5%9E%8B/" class="article-date">
-  <time class="dt-published" datetime="2025-06-22T04:40:14.000Z" itemprop="datePublished">2025-06-22</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2025/06/22/%E5%9F%BA%E7%A1%80%E7%B1%BB%E5%9E%8B/">基础类型</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h3 id="基本类型"><a href="#基本类型" class="headerlink" title="基本类型"></a>基本类型</h3><table>
-<thead>
-<tr>
-<th>类型</th>
-<th>默认类型</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>整数</td>
-<td><code>i32</code> ✅</td>
-</tr>
-<tr>
-<td>浮点</td>
-<td><code>f64</code> ✅</td>
-</tr>
-</tbody></table>
-<h4 id="数值类型"><a href="#数值类型" class="headerlink" title="数值类型"></a>数值类型</h4><ul>
-<li><font style="color:rgb(0, 0, 0);">数值类型：</font><ul>
-<li><font style="color:rgb(0, 0, 0);">有符号整数 (</font><font style="color:rgb(48, 25, 0);background-color:rgb(246, 247, 246);">i8</font><font style="color:rgb(0, 0, 0);">, </font><font style="color:rgb(48, 25, 0);background-color:rgb(246, 247, 246);">i16</font><font style="color:rgb(0, 0, 0);">, </font><font style="color:rgb(48, 25, 0);background-color:rgb(246, 247, 246);">i32</font><font style="color:rgb(0, 0, 0);">, </font><font style="color:rgb(48, 25, 0);background-color:rgb(246, 247, 246);">i64</font><font style="color:rgb(0, 0, 0);">, </font><font style="color:rgb(48, 25, 0);background-color:rgb(246, 247, 246);">isize</font><font style="color:rgb(0, 0, 0);">)</font></li>
-<li><font style="color:rgb(0, 0, 0);"> 无符号整数 (</font><font style="color:rgb(48, 25, 0);background-color:rgb(246, 247, 246);">u8</font><font style="color:rgb(0, 0, 0);">, </font><font style="color:rgb(48, 25, 0);background-color:rgb(246, 247, 246);">u16</font><font style="color:rgb(0, 0, 0);">, </font><font style="color:rgb(48, 25, 0);background-color:rgb(246, 247, 246);">u32</font><font style="color:rgb(0, 0, 0);">, </font><font style="color:rgb(48, 25, 0);background-color:rgb(246, 247, 246);">u64</font><font style="color:rgb(0, 0, 0);">, </font><font style="color:rgb(48, 25, 0);background-color:rgb(246, 247, 246);">usize</font><font style="color:rgb(0, 0, 0);">) 、浮点数 (</font><font style="color:rgb(48, 25, 0);background-color:rgb(246, 247, 246);">f32</font><font style="color:rgb(0, 0, 0);">, </font><font style="color:rgb(48, 25, 0);background-color:rgb(246, 247, 246);">f64</font><font style="color:rgb(0, 0, 0);">)、以及有理数、复数</font></li>
-</ul>
-</li>
-<li>有符号和无符号区别<ul>
-<li><strong><font style="color:rgb(0, 0, 0);">有符号</font></strong><font style="color:rgb(0, 0, 0);">则表示数字可以取正数、负数还有 0</font></li>
-<li><strong><font style="color:rgb(0, 0, 0);">无符号数</font></strong><font style="color:rgb(0, 0, 0);">表示数字只能取正数和 0</font></li>
-</ul>
-</li>
-</ul>
-<h5 id="浮点类型"><a href="#浮点类型" class="headerlink" title="浮点类型"></a>浮点类型</h5><p> 浮点数字面量默认就是 f64 类型  </p>
-<h5 id="Rang"><a href="#Rang" class="headerlink" title="Rang"></a>Rang</h5><figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">fn</span> <span class="title function_">main</span>()&#123;</span><br><span class="line">   <span class="keyword">for</span> <span class="variable">i</span> <span class="keyword">in</span> <span class="number">1</span>..=<span class="number">10</span>&#123;</span><br><span class="line">       <span class="built_in">println!</span>(<span class="string">&quot;&#123;&#125;&quot;</span>,i);</span><br><span class="line"></span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">for</span> <span class="variable">i</span> <span class="keyword">in</span> <span class="string">&#x27;a&#x27;</span>..=<span class="string">&#x27;z&#x27;</span>&#123;</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;&#123;&#125;&quot;</span>,i);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h5 id="Complex"><a href="#Complex" class="headerlink" title="Complex"></a>Complex</h5><figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">pub</span> <span class="keyword">struct</span> <span class="title class_">Complex</span>&lt;T&gt; &#123;</span><br><span class="line">    <span class="keyword">pub</span> re: T,  <span class="comment">// 实部</span></span><br><span class="line">    <span class="keyword">pub</span> im: T,  <span class="comment">// 虚部</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">use</span> num::complex::Complex; <span class="comment">// 引入 num crate 中的 Complex 复数类型</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">fn</span> <span class="title function_">main</span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> <span class="variable">a</span> = Complex &#123; re: <span class="number">2.1</span>, im: -<span class="number">1.2</span> &#125;; <span class="comment">// 创建复数 a = 2.1 - 1.2i</span></span><br><span class="line">    <span class="keyword">let</span> <span class="variable">b</span> = Complex::<span class="title function_ invoke__">new</span>(<span class="number">11.1</span>, <span class="number">22.2</span>);      <span class="comment">// 创建复数 b = 11.1 + 22.2i</span></span><br><span class="line">    <span class="keyword">let</span> <span class="variable">result</span> = a + b;                   <span class="comment">// 复数相加：实部 + 实部，虚部 + 虚部</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;&#123;&#125; + &#123;&#125;i&quot;</span>, result.re, result.im); <span class="comment">// 打印结果复数</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h6 id="怎么计算"><a href="#怎么计算" class="headerlink" title="怎么计算"></a>怎么计算</h6><figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="number">2.1</span> - <span class="number">1.2</span>i</span><br><span class="line">b = <span class="number">11.1</span> + <span class="number">22.2</span>i</span><br><span class="line">result = (<span class="number">2.1</span> + <span class="number">11.1</span>) + (-<span class="number">1.2</span> + <span class="number">22.2</span>)i = <span class="number">13.2</span> + <span class="number">21.0</span>i</span><br></pre></td></tr></table></figure>
-
-<h6 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h6><table>
-<thead>
-<tr>
-<th>表达式</th>
-<th>含义</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>Complex &#123; re: a, im: b &#125;</code></td>
-<td>创建复数 <code>a + bi</code></td>
-</tr>
-<tr>
-<td><code>Complex::new(a, b)</code></td>
-<td>同上，更常用</td>
-</tr>
-<tr>
-<td><code>a + b</code></td>
-<td>复数相加</td>
-</tr>
-<tr>
-<td><code>result.re</code></td>
-<td>实部</td>
-</tr>
-<tr>
-<td><code>result.im</code></td>
-<td>虚部</td>
-</tr>
-</tbody></table>
-<h4 id="字符、布尔、单元类型"><a href="#字符、布尔、单元类型" class="headerlink" title="字符、布尔、单元类型"></a><a target="_blank" rel="noopener" href="https://course.rs/basic/base-type/char-bool.html#%E5%AD%97%E7%AC%A6%E5%B8%83%E5%B0%94%E5%8D%95%E5%85%83%E7%B1%BB%E5%9E%8B"><font style="color:rgb(0, 0, 0);">字符、布尔、单元类型</font></a></h4><h5 id="字符类型-char"><a href="#字符类型-char" class="headerlink" title="字符类型(char)"></a><a target="_blank" rel="noopener" href="https://course.rs/basic/base-type/char-bool.html#%E5%AD%97%E7%AC%A6%E7%B1%BB%E5%9E%8Bchar"><font style="color:rgb(0, 0, 0);">字符类型(char)</font></a></h5><p><font style="color:rgb(0, 0, 0);background-color:rgb(241, 246, 249);">Rust 的字符只能用 </font><font style="color:rgb(48, 25, 0);background-color:rgb(246, 247, 246);">‘’</font><font style="color:rgb(0, 0, 0);background-color:rgb(241, 246, 249);"> 来表示,占用4个字节， </font><font style="color:rgb(48, 25, 0);background-color:rgb(246, 247, 246);">“”</font><font style="color:rgb(0, 0, 0);background-color:rgb(241, 246, 249);"> 是留给字符串的。</font></p>
-<h5 id="Nan"><a href="#Nan" class="headerlink" title="Nan"></a><font style="color:rgb(0, 0, 0);background-color:rgb(241, 246, 249);">Nan</font></h5><p><code>**NaN**</code><strong>（Not a Number）</strong> 是一种特殊的浮点数值，表示<strong>某个运算结果不是一个合法的数字</strong>。</p>
-<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">fn</span> <span class="title function_">main</span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> <span class="variable">v</span> = (-<span class="number">1.1f64</span>).<span class="title function_ invoke__">sqrt</span>();</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;&#123;&#125;&quot;</span>, v);</span><br><span class="line">    <span class="keyword">if</span> v.<span class="title function_ invoke__">is_nan</span>() &#123;</span><br><span class="line">        <span class="built_in">println!</span>(<span class="string">&quot;sqrt(-1.1) is NaN&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<table>
-<thead>
-<tr>
-<th>特性</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>类型</td>
-<td>只出现在 <code>f32</code> 和 <code>f64</code> 中</td>
-</tr>
-<tr>
-<td>含义</td>
-<td>表示 “不是数字” 的特殊浮点值</td>
-</tr>
-<tr>
-<td>出现场景</td>
-<td>0&#x2F;0、负数开方、无效浮点运算</td>
-</tr>
-<tr>
-<td>判断方法</td>
-<td><code>x.is_nan()</code></td>
-</tr>
-<tr>
-<td>对比行为</td>
-<td><code>NaN != NaN</code> 永远为 <code>true</code>（即它不等于任何东西）</td>
-</tr>
-</tbody></table>
-<h5 id="布尔-bool"><a href="#布尔-bool" class="headerlink" title="布尔(bool)"></a><a target="_blank" rel="noopener" href="https://course.rs/basic/base-type/char-bool.html#%E5%B8%83%E5%B0%94bool"><font style="color:rgb(0, 0, 0);">布尔(bool)</font></a></h5><p><font style="color:rgb(0, 0, 0);">Rust 中的布尔类型有两个可能的值：</font><font style="color:rgb(48, 25, 0);background-color:rgb(246, 247, 246);">true</font><font style="color:rgb(0, 0, 0);"> 和 </font><font style="color:rgb(48, 25, 0);background-color:rgb(246, 247, 246);">false</font><font style="color:rgb(0, 0, 0);">，布尔值占用内存的大小为 </font><font style="color:rgb(48, 25, 0);background-color:rgb(246, 247, 246);">1</font><font style="color:rgb(0, 0, 0);"> 个字节</font></p>
-<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">fn</span> <span class="title function_">main</span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> <span class="variable">t</span> = <span class="literal">true</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">let</span> <span class="variable">f</span>: <span class="type">bool</span> = <span class="literal">false</span>; <span class="comment">// 使用类型标注,显式指定f的类型</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> f &#123;</span><br><span class="line">        <span class="built_in">println!</span>(<span class="string">&quot;这是段毫无意义的代码&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h5 id="单元类型-unit"><a href="#单元类型-unit" class="headerlink" title="单元类型(unit)"></a><a target="_blank" rel="noopener" href="https://course.rs/basic/base-type/char-bool.html#%E5%8D%95%E5%85%83%E7%B1%BB%E5%9E%8Bunit"><font style="color:rgb(0, 0, 0);">单元类型(unit)</font></a></h5><p><font style="color:rgb(0, 0, 0);">单元类型就是 </font><font style="color:rgb(48, 25, 0);background-color:rgb(246, 247, 246);">()</font></p>
-<ol>
-<li><font style="color:rgb(48, 25, 0);background-color:rgb(246, 247, 246);">main</font><font style="color:rgb(0, 0, 0);"> 函数就返回这个单元类型 </font><font style="color:rgb(48, 25, 0);background-color:rgb(246, 247, 246);">()</font></li>
-<li><font style="color:rgb(48, 25, 0);background-color:rgb(246, 247, 246);">println!()</font><font style="color:rgb(0, 0, 0);"> 的返回值也是单元类型 </font><font style="color:rgb(48, 25, 0);background-color:rgb(246, 247, 246);">()</font></li>
-</ol>
-<p><font style="color:rgb(48, 25, 0);background-color:rgb(246, 247, 246);"></font></p>
-<h4 id="序列"><a href="#序列" class="headerlink" title="序列"></a><font style="color:rgb(48, 25, 0);background-color:rgb(246, 247, 246);">序列</font></h4><h4 id="类型强转"><a href="#类型强转" class="headerlink" title="类型强转"></a>类型强转</h4><p> 类型强转（type casting）是<strong>把一种类型的数据强制转换为另一种类型</strong>，通常使用 <code>as</code> 关键字完成。  </p>
-<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="variable">x</span>: <span class="type">u8</span> = <span class="number">255</span>;</span><br><span class="line"><span class="keyword">let</span> <span class="variable">y</span> = x <span class="keyword">as</span> <span class="type">u16</span>;   <span class="comment">// u8 -&gt; u16</span></span><br><span class="line"><span class="keyword">let</span> <span class="variable">z</span> = x <span class="keyword">as</span> <span class="type">i32</span>;   <span class="comment">// u8 -&gt; i32</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="语句与表达式"><a href="#语句与表达式" class="headerlink" title="语句与表达式"></a><font style="color:rgb(48, 25, 0);background-color:rgb(246, 247, 246);">语句与表达式</font></h4><p><font style="color:rgb(0, 0, 0);">Rust 的函数体是由一系列语句组成，最后由一个表达式来返回值，例如</font></p>
-<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">fn</span> <span class="title function_">add_with_extra</span>(x: <span class="type">i32</span>, y: <span class="type">i32</span>) <span class="punctuation">-&gt;</span> <span class="type">i32</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> <span class="variable">x</span> = x + <span class="number">1</span>; <span class="comment">// 语句</span></span><br><span class="line">    <span class="keyword">let</span> <span class="variable">y</span> = y + <span class="number">5</span>; <span class="comment">// 语句</span></span><br><span class="line">    x + y <span class="comment">// 表达式</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 由于 let 是语句，因此不能将 let 语句赋值给其它值，如下形式是错误的</span></span><br><span class="line"><span class="keyword">let</span> <span class="variable">b</span> = (<span class="keyword">let</span> <span class="variable">a</span> = <span class="number">8</span>);</span><br></pre></td></tr></table></figure>
-
-<p><strong><font style="color:rgb(0, 0, 0);">表达式不能包含分号</font></strong><font style="color:rgb(0, 0, 0);">。这一点非常重要，一旦你在表达式后加上分号，它就会变成一条语句，再也</font><strong><font style="color:rgb(0, 0, 0);">不会</font></strong><font style="color:rgb(0, 0, 0);">返回一个值</font></p>
-<p><font style="color:rgb(0, 0, 0);">表达式如果不返回任何值，会隐式地返回一个 </font><a target="_blank" rel="noopener" href="https://course.rs/basic/base-type/char-bool.html#%E5%8D%95%E5%85%83%E7%B1%BB%E5%9E%8B"><font style="color:rgb(32, 96, 159);">()</font></a></p>
-<h5 id="举例"><a href="#举例" class="headerlink" title="举例"></a><font style="color:rgb(32, 96, 159);">举例</font></h5><p><font style="color:rgb(32, 96, 159);">x+&#x3D;2 是语句,不是表达式 v会返回()</font></p>
-<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">fn</span> <span class="title function_">main</span>() &#123;</span><br><span class="line">     <span class="keyword">let</span> <span class="variable">v</span> = &#123;</span><br><span class="line">       <span class="keyword">let</span> <span class="keyword">mut </span><span class="variable">x</span> = <span class="number">1</span>;</span><br><span class="line">       x += <span class="number">2</span></span><br><span class="line">   &#125;;</span><br><span class="line">   <span class="built_in">println!</span>(<span class="string">&quot;&#123;:?&#125;&quot;</span>, v);</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
-
-<p><font style="color:rgb(32, 96, 159);">这样x会返回3</font></p>
-<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">fn</span> <span class="title function_">main</span>() &#123;</span><br><span class="line">     <span class="keyword">let</span> <span class="variable">v</span> = &#123;</span><br><span class="line">       <span class="keyword">let</span> <span class="keyword">mut </span><span class="variable">x</span> = <span class="number">1</span>;</span><br><span class="line">       x += <span class="number">2</span>;x</span><br><span class="line">   &#125;;</span><br><span class="line">    <span class="built_in">assert_eq!</span>(v, <span class="number">3</span>);</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
-
-<h3 id="常见格式化符号汇总"><a href="#常见格式化符号汇总" class="headerlink" title="常见格式化符号汇总"></a>常见格式化符号汇总</h3><table>
-<thead>
-<tr>
-<th>占位符</th>
-<th>含义</th>
-<th>示例输出</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>&#123;&#125;</code></td>
-<td>默认格式（Display）</td>
-<td><code>123</code>, <code>&quot;abc&quot;</code></td>
-</tr>
-<tr>
-<td><code>&#123;:?&#125;</code></td>
-<td>Debug 格式</td>
-<td><code>[1, 2, 3]</code>, <code>MyStruct &#123;..&#125;</code></td>
-</tr>
-<tr>
-<td><code>&#123;:#?&#125;</code></td>
-<td>Pretty Debug（换行）</td>
-<td>多行更易读的调试输出</td>
-</tr>
-<tr>
-<td><code>&#123;:x&#125;</code></td>
-<td>十六进制（小写）</td>
-<td><code>ff</code></td>
-</tr>
-<tr>
-<td><code>&#123;:X&#125;</code></td>
-<td>十六进制（大写）</td>
-<td><code>FF</code></td>
-</tr>
-<tr>
-<td><code>&#123;:b&#125;</code></td>
-<td>二进制</td>
-<td><code>11111111</code></td>
-</tr>
-<tr>
-<td><code>&#123;:o&#125;</code></td>
-<td>八进制</td>
-<td><code>377</code></td>
-</tr>
-<tr>
-<td><code>&#123;:p&#125;</code></td>
-<td>指针地址</td>
-<td><code>0x7ffeeafd8a30</code>（仅指针）</td>
-</tr>
-<tr>
-<td><code>&#123;:e&#125;</code></td>
-<td>科学计数法（小写）</td>
-<td><code>1.23e4</code></td>
-</tr>
-<tr>
-<td><code>&#123;:E&#125;</code></td>
-<td>科学计数法（大写）</td>
-<td><code>1.23E4</code></td>
-</tr>
-<tr>
-<td><code>&#123;:&gt;5&#125;</code></td>
-<td>右对齐宽度为5</td>
-<td><code>&#39;   42&#39;</code></td>
-</tr>
-<tr>
-<td><code>&#123;:0&gt;5&#125;</code></td>
-<td>填充0右对齐</td>
-<td><code>&#39;00042&#39;</code></td>
-</tr>
-</tbody></table>
-<h3 id="常用的浮点方法"><a href="#常用的浮点方法" class="headerlink" title="常用的浮点方法"></a>常用的浮点方法</h3><table>
-<thead>
-<tr>
-<th>方法</th>
-<th>含义</th>
-<th>示例</th>
-<th>输出</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>.abs()</code></td>
-<td>绝对值</td>
-<td><code>(-3.5_f64).abs()</code></td>
-<td><code>3.5</code></td>
-</tr>
-<tr>
-<td><code>.ceil()</code></td>
-<td>向上取整</td>
-<td><code>2.3_f32.ceil()</code></td>
-<td><code>3.0</code></td>
-</tr>
-<tr>
-<td><code>.floor()</code></td>
-<td>向下取整</td>
-<td><code>2.9_f64.floor()</code></td>
-<td><code>2.0</code></td>
-</tr>
-<tr>
-<td><code>.round()</code></td>
-<td>四舍五入</td>
-<td><code>2.5_f32.round()</code></td>
-<td><code>3.0</code></td>
-</tr>
-<tr>
-<td><code>.trunc()</code></td>
-<td>截断小数</td>
-<td><code>2.9_f64.trunc()</code></td>
-<td><code>2.0</code></td>
-</tr>
-<tr>
-<td><code>.fract()</code></td>
-<td>小数部分</td>
-<td><code>3.1415_f64.fract()</code></td>
-<td><code>0.1415</code></td>
-</tr>
-<tr>
-<td><code>.sqrt()</code></td>
-<td>平方根</td>
-<td><code>9.0_f64.sqrt()</code></td>
-<td><code>3.0</code></td>
-</tr>
-<tr>
-<td><code>.powi(n)</code></td>
-<td>整数次方</td>
-<td><code>2.0_f32.powi(3)</code></td>
-<td><code>8.0</code></td>
-</tr>
-<tr>
-<td><code>.powf(x)</code></td>
-<td>浮点次方</td>
-<td><code>4.0_f64.powf(0.5)</code></td>
-<td><code>2.0</code></td>
-</tr>
-<tr>
-<td><code>.sin()</code> &#x2F; <code>.cos()</code></td>
-<td>三角函数</td>
-<td><code>std::f64::consts::PI.sin()</code></td>
-<td><code>≈ 0.0</code></td>
-</tr>
-<tr>
-<td><code>.ln()</code></td>
-<td>自然对数</td>
-<td><code>2.71828_f64.ln()</code></td>
-<td><code>≈ 1.0</code></td>
-</tr>
-<tr>
-<td><code>.log(base)</code></td>
-<td>任意底对数</td>
-<td><code>100.0_f64.log(10.0)</code></td>
-<td><code>2.0</code></td>
-</tr>
-</tbody></table>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2025/06/22/%E5%9F%BA%E7%A1%80%E7%B1%BB%E5%9E%8B/" data-id="cmckkwlzx0006f6qwcdfg2vv5" data-title="基础类型" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/06/23/%E6%89%80%E6%9C%89%E6%9D%83%E5%92%8C%E5%80%9F%E7%94%A8/" data-id="cmclplgt9000b6kqw5dxo7z2l" data-title="所有权和借用" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -1773,6 +1562,10 @@
       <ul>
         
           <li>
+            <a href="/2025/07/02/%E9%9B%86%E5%90%88/">集合</a>
+          </li>
+        
+          <li>
             <a href="/2025/07/01/%E7%89%B9%E5%BE%81/">特征</a>
           </li>
         
@@ -1786,10 +1579,6 @@
         
           <li>
             <a href="/2025/06/28/%E6%A8%A1%E5%BC%8F%E5%8C%B9%E9%85%8D/">模式匹配</a>
-          </li>
-        
-          <li>
-            <a href="/2025/06/27/%E7%BB%93%E6%9E%84%E4%BD%93/">结构体</a>
           </li>
         
       </ul>
