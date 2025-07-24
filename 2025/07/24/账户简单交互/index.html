@@ -1,0 +1,352 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>账户简单交互 | my blog</title><meta name="author" content="Li"><meta name="copyright" content="Li"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Solana 账户模型概览 Solana 没有以太坊中那种“拥有逻辑的合约账户”，而是将数据和逻辑分离：      类型 说明    账户（Account） 存储状态的数据容器，没有代码逻辑。   程序（Program） 纯逻辑代码，是只读的（不可更改的代码），负责操作账户数据。   🧾 #[account] pub struct Xxx 是程序内部定义的账户数据结构说明书，它对应链上某个账户的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="账户简单交互">
+<meta property="og:url" content="https://just-gol.github.io/2025/07/24/%E8%B4%A6%E6%88%B7%E7%AE%80%E5%8D%95%E4%BA%A4%E4%BA%92/index.html">
+<meta property="og:site_name" content="my blog">
+<meta property="og:description" content="Solana 账户模型概览 Solana 没有以太坊中那种“拥有逻辑的合约账户”，而是将数据和逻辑分离：      类型 说明    账户（Account） 存储状态的数据容器，没有代码逻辑。   程序（Program） 纯逻辑代码，是只读的（不可更改的代码），负责操作账户数据。   🧾 #[account] pub struct Xxx 是程序内部定义的账户数据结构说明书，它对应链上某个账户的">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://just-gol.github.io/img/butterfly-icon.png">
+<meta property="article:published_time" content="2025-07-24T07:21:58.000Z">
+<meta property="article:modified_time" content="2025-07-24T07:24:15.076Z">
+<meta property="article:author" content="Li">
+<meta property="article:tag" content="Solana">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://just-gol.github.io/img/butterfly-icon.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "账户简单交互",
+  "url": "https://just-gol.github.io/2025/07/24/%E8%B4%A6%E6%88%B7%E7%AE%80%E5%8D%95%E4%BA%A4%E4%BA%92/",
+  "image": "https://just-gol.github.io/img/butterfly-icon.png",
+  "datePublished": "2025-07-24T07:21:58.000Z",
+  "dateModified": "2025-07-24T07:24:15.076Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "Li",
+      "url": "https://just-gol.github.io/"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://just-gol.github.io/2025/07/24/%E8%B4%A6%E6%88%B7%E7%AE%80%E5%8D%95%E4%BA%A4%E4%BA%92/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Failed',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '账户简单交互',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">my blog</span></a><a class="nav-page-title" href="/"><span class="site-name">账户简单交互</span></a></span><div id="menus"></div></nav><div id="post-info"><h1 class="post-title">账户简单交互</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2025-07-24T07:21:58.000Z" title="Created 2025-07-24 15:21:58">2025-07-24</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2025-07-24T07:24:15.076Z" title="Updated 2025-07-24 15:24:15">2025-07-24</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post Views:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h3 id="Solana-账户模型概览"><a href="#Solana-账户模型概览" class="headerlink" title="Solana 账户模型概览"></a>Solana 账户模型概览</h3><p> Solana 没有以太坊中那种“拥有逻辑的合约账户”，而是将<strong>数据</strong>和<strong>逻辑</strong>分离：  </p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>账户（Account）</strong></td>
+<td>存储状态的数据容器，没有代码逻辑。</td>
+</tr>
+<tr>
+<td><strong>程序（Program）</strong></td>
+<td>纯逻辑代码，是只读的（不可更改的代码），负责操作账户数据。</td>
+</tr>
+</tbody></table>
+<p>🧾 <code>#[account] pub struct Xxx</code> 是程序内部定义的<strong>账户数据结构说明书</strong>，它对应链上某个账户的 <code>data</code> 字节布局；</p>
+<p>🧠 程序（Program）是部署在 Solana 上的智能合约，控制对账户数据的读写，是 <code>executable = true</code> 的特殊账户。  </p>
+<h3 id="账户的结构"><a href="#账户的结构" class="headerlink" title="账户的结构"></a>账户的结构</h3><figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Account &#123;</span><br><span class="line">  lamports: <span class="type">u64</span>,             <span class="comment">// 当前账户余额（以 lamport 计，1 SOL = 10^9 lamport）</span></span><br><span class="line">  owner: Pubkey,             <span class="comment">// 控制该账户的程序（程序的公钥）</span></span><br><span class="line">  data: <span class="type">Vec</span>&lt;<span class="type">u8</span>&gt;,             <span class="comment">// 账户中存储的二进制数据（最多可被一个程序解释）</span></span><br><span class="line">  executable: <span class="type">bool</span>,          <span class="comment">// 是否为可执行程序账户</span></span><br><span class="line">  rent_epoch: <span class="type">u64</span>,           <span class="comment">// 上次免租金的 epoch（用于判断账户是否需要付租金）</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>owner</code> 决定了<strong>哪个程序可以修改这个账户的 data 字段</strong>。</li>
+<li><code>data</code> 是程序使用 <code>#[account]</code> 定义的结构体序列化后的内容。</li>
+<li><code>executable</code> 为 true 表示这是一个程序账户（部署的智能合约代码）,<code>false</code> 表示该账户是“非程序账户”，只是用来存数据或持币的，不包含代码，不能执行调用。  </li>
+<li>所有账户都需付租金，保持活跃状态；除非余额足够租金豁免</li>
+</ul>
+<h3 id="账户的分类"><a href="#账户的分类" class="headerlink" title="账户的分类"></a>账户的分类</h3><h4 id="系统账户（System-Account）"><a href="#系统账户（System-Account）" class="headerlink" title="系统账户（System Account）"></a>系统账户（System Account）</h4><p> 这是用户的钱包账户，由系统程序创建，默认 owner 是 <code>SystemProgram</code>。 </p>
+<h5 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h5><ul>
+<li>只有 lamports（余额）</li>
+<li>没有自定义数据</li>
+<li>executable &#x3D; false</li>
+<li>只能转账，不支持存结构体</li>
+</ul>
+<h5 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h5><p> 用户钱包账户 <code>5Hw9...K3hA</code> 就是一个系统账户：  </p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Account</span><br><span class="line">- lamports: <span class="number">2</span> SOL</span><br><span class="line">- owner: SystemProgram111111111111111111111111111111111</span><br><span class="line">- data: []</span><br><span class="line">- executable: <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="程序账户（Program-Account）"><a href="#程序账户（Program-Account）" class="headerlink" title="程序账户（Program Account）"></a>程序账户（Program Account）</h4><p> 这是你部署的智能合约（用 Rust 写的程序），是 <code>executable = true</code> 的账户。  </p>
+<h5 id="特点-1"><a href="#特点-1" class="headerlink" title="特点"></a>特点</h5><ul>
+<li>只读，不可修改</li>
+<li>存的是 BPF 字节码（程序逻辑）</li>
+<li>一旦部署无法更改（immutable）</li>
+<li>所有权为 BPFLoader</li>
+</ul>
+<h5 id="示例-1"><a href="#示例-1" class="headerlink" title="示例"></a>示例</h5><figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Account</span><br><span class="line">- lamports: <span class="number">0.05</span> SOL</span><br><span class="line">- owner: BPFLoader1111111111111111111111111111111111</span><br><span class="line">- executable: <span class="literal">true</span></span><br><span class="line">- data: [compiled code]</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="数据账户（Data-Account）"><a href="#数据账户（Data-Account）" class="headerlink" title="数据账户（Data Account）"></a>数据账户（Data Account）</h4><p> 你程序运行时创建的账户，用来存储用户的 todo 数据。  </p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#[account]</span></span><br><span class="line"><span class="keyword">pub</span> <span class="keyword">struct</span> <span class="title class_">TodoAccount</span> &#123;</span><br><span class="line">    <span class="keyword">pub</span> owner: Pubkey,</span><br><span class="line">    <span class="keyword">pub</span> title: <span class="type">String</span>,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p> 运行时你用 Anchor 创建了一个链上账户 <code>todoData2222...</code> 存放这条数据。  </p>
+<h5 id="特点-2"><a href="#特点-2" class="headerlink" title="特点"></a>特点</h5><ul>
+<li>executable &#x3D; false</li>
+<li>owner 是程序地址</li>
+<li>data 是你程序中结构体序列化的结果</li>
+</ul>
+<h5 id="示例-2"><a href="#示例-2" class="headerlink" title="示例"></a>示例</h5><figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Account</span><br><span class="line">- lamports: <span class="number">0.01</span> SOL</span><br><span class="line">- owner: todoProg11111111111111111111111111111111111  ← 你部署的程序地址</span><br><span class="line">- executable: <span class="literal">false</span></span><br><span class="line">- data: &#123;</span><br><span class="line">    owner: 用户钱包地址,</span><br><span class="line">    title: <span class="string">&quot;写 Solana 合约&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p> 这类账户一般由 <code>#[account(init)]</code> 初始化，指定数据空间、payer 和 owner。  </p>
+<h4 id="PDA-账户（Program-Derived-Address）"><a href="#PDA-账户（Program-Derived-Address）" class="headerlink" title="PDA 账户（Program Derived Address）"></a>PDA 账户（Program Derived Address）</h4><p><strong>程序自动生成的地址（不对应任何私钥）</strong>，通常用来作为某个用户的“专属账户”或“统一存储账户”。</p>
+<p>例如：你想给每个用户生成一个固定的 Todo 列表账户，可以这么做：</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> (pda, bump) = Pubkey::<span class="title function_ invoke__">find_program_address</span>(&amp;[<span class="string">b&quot;user&quot;</span>, user.<span class="title function_ invoke__">key</span>().<span class="title function_ invoke__">as_ref</span>()], program_id);</span><br></pre></td></tr></table></figure>
+
+<p> 然后由程序去创建并操作这个地址。  </p>
+<h5 id="anchor创建pda账户"><a href="#anchor创建pda账户" class="headerlink" title="anchor创建pda账户"></a>anchor创建pda账户</h5><figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">use</span> anchor_lang::prelude::*;</span><br><span class="line"></span><br><span class="line">declare_id!(<span class="string">&quot;75GJVCJNhaukaa2vCCqhreY31gaphv7XTScBChmr1ueR&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="meta">#[program]</span></span><br><span class="line"><span class="keyword">pub</span> <span class="keyword">mod</span> pda_account &#123;</span><br><span class="line">    <span class="keyword">use</span> super::*;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">pub</span> <span class="keyword">fn</span> <span class="title function_">initialize</span>(ctx: Context&lt;Initialize&gt;) <span class="punctuation">-&gt;</span> <span class="type">Result</span>&lt;()&gt; &#123;</span><br><span class="line">        <span class="keyword">let</span> <span class="variable">account_data</span> = &amp;<span class="keyword">mut</span> ctx.accounts.pda_account;</span><br><span class="line">        <span class="comment">// store the address of the `user`</span></span><br><span class="line">        account_data.user = *ctx.accounts.user.key;</span><br><span class="line">        <span class="comment">// store the canonical bump</span></span><br><span class="line">        account_data.bump = ctx.bumps.pda_account;</span><br><span class="line">        <span class="title function_ invoke__">Ok</span>(())</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#[derive(Accounts)]</span></span><br><span class="line"><span class="keyword">pub</span> <span class="keyword">struct</span> <span class="title class_">Initialize</span>&lt;<span class="symbol">&#x27;info</span>&gt; &#123;</span><br><span class="line">    <span class="meta">#[account(mut)]</span></span><br><span class="line">    <span class="keyword">pub</span> user: Signer&lt;<span class="symbol">&#x27;info</span>&gt;,</span><br><span class="line"></span><br><span class="line">    <span class="meta">#[account(</span></span><br><span class="line"><span class="meta">        init,</span></span><br><span class="line"><span class="meta">        // define the seeds to derive the PDA</span></span><br><span class="line"><span class="meta">        seeds = [b<span class="string">&quot;data&quot;</span>, user.key().as_ref()]</span>,</span><br><span class="line">        <span class="comment">// use the canonical bump</span></span><br><span class="line">        bump,</span><br><span class="line">        payer = user,</span><br><span class="line">        space = <span class="number">8</span> + DataAccount::INIT_SPACE</span><br><span class="line">    )]</span><br><span class="line">    <span class="keyword">pub</span> pda_account: Account&lt;<span class="symbol">&#x27;info</span>, DataAccount&gt;,</span><br><span class="line">    <span class="keyword">pub</span> system_program: Program&lt;<span class="symbol">&#x27;info</span>, System&gt;,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#[account]</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#[derive(InitSpace)]</span></span><br><span class="line"><span class="keyword">pub</span> <span class="keyword">struct</span> <span class="title class_">DataAccount</span> &#123;</span><br><span class="line">    <span class="keyword">pub</span> user: Pubkey,</span><br><span class="line">    <span class="keyword">pub</span> bump: <span class="type">u8</span>,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="特点-3"><a href="#特点-3" class="headerlink" title="特点"></a>特点</h5><ul>
+<li>不可签名（没有私钥）</li>
+<li>只能由对应程序通过 <code>invoke_signed</code> 操作</li>
+<li>多用于“程序管理的数据账户”</li>
+</ul>
+<h5 id="示例-3"><a href="#示例-3" class="headerlink" title="示例"></a>示例</h5><figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Account</span><br><span class="line">- address: todoPDA3333...</span><br><span class="line">- owner: todoProg11111111111111111111111111111111111</span><br><span class="line">- executable: <span class="literal">false</span></span><br><span class="line">- data: &#123;</span><br><span class="line">    title: <span class="string">&quot;我的 PDA 账户&quot;</span>,</span><br><span class="line">    items: []</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>系统账户</strong></td>
+<td>创建时没有自定义数据，一般只持有 lamports，如用户钱包地址。</td>
+</tr>
+<tr>
+<td><strong>数据账户</strong></td>
+<td>用于存储状态数据，一般由某个程序 <code>init</code> 创建。</td>
+</tr>
+<tr>
+<td><strong>程序账户</strong></td>
+<td>部署后的程序代码，<code>executable = true</code>。</td>
+</tr>
+<tr>
+<td><strong>PDA（Program Derived Address）账户</strong></td>
+<td>程序根据种子自动生成的账户，常用于 program 拥有的状态账户。</td>
+</tr>
+</tbody></table>
+<h4 id="实际开发中常见场景"><a href="#实际开发中常见场景" class="headerlink" title="实际开发中常见场景"></a>实际开发中常见场景</h4><table>
+<thead>
+<tr>
+<th>场景</th>
+<th>使用账户类型</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>用户签名调用程序</td>
+<td>系统账户（钱包）</td>
+</tr>
+<tr>
+<td>部署程序</td>
+<td>程序账户</td>
+</tr>
+<tr>
+<td>存储用户数据</td>
+<td>数据账户 or PDA</td>
+</tr>
+<tr>
+<td>给用户自动分配一个专属地址</td>
+<td>PDA 账户（由程序推导）</td>
+</tr>
+</tbody></table>
+<h3 id="账户操作"><a href="#账户操作" class="headerlink" title="账户操作"></a>账户操作</h3><p>Solana 程序无法创建账户或操作 SOL，必须通过 <code>system_program</code> 或其他内置程序来完成：</p>
+<ul>
+<li>创建账户：<code>system_program::create_account</code></li>
+<li>分配 lamports：<code>system_program::transfer</code></li>
+<li>分配数据空间：在创建账户时一并指定 <code>space</code></li>
+</ul>
+<h3 id="Solana-程序与账户交互机制（ctx）"><a href="#Solana-程序与账户交互机制（ctx）" class="headerlink" title="Solana 程序与账户交互机制（ctx）"></a>Solana 程序与账户交互机制（ctx）</h3><p> Solana 的程序无法主动操作链上账户，它们只能处理被“传入”的账户：  </p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#[derive(Accounts)]</span></span><br><span class="line"><span class="keyword">pub</span> <span class="keyword">struct</span> <span class="title class_">SetData</span>&lt;<span class="symbol">&#x27;info</span>&gt; &#123;</span><br><span class="line">    <span class="meta">#[account(mut)]</span></span><br><span class="line">    <span class="keyword">pub</span> my_account: Account&lt;<span class="symbol">&#x27;info</span>, MyAccountData&gt;,</span><br><span class="line"></span><br><span class="line">    <span class="keyword">pub</span> user: Signer&lt;<span class="symbol">&#x27;info</span>&gt;,</span><br><span class="line">    <span class="keyword">pub</span> system_program: Program&lt;<span class="symbol">&#x27;info</span>, System&gt;,</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>#[account(mut)]</code> 表示此账户可变，会被程序修改。</li>
+<li><code>Signer&lt;&#39;info&gt;</code> 是调用者的钱包签名者。</li>
+<li><code>Program&lt;&#39;info, System&gt;</code> 是内置系统程序。</li>
+</ul>
+<h3 id="PDA（Program-Derived-Addresses）"><a href="#PDA（Program-Derived-Addresses）" class="headerlink" title="PDA（Program Derived Addresses）"></a>PDA（Program Derived Addresses）</h3><blockquote>
+<p> PDA 就是程序专属的“自动生成的账户”，只能程序能用、用户打不开，非常适合做：用户数据、配置数据、资源分配等。  </p>
+</blockquote>
+<p> Solana 中一个程序不能拥有私钥，但可以通过 PDA 创建“它能控制的账户”  </p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> (pda, bump) = Pubkey::<span class="title function_ invoke__">find_program_address</span>(&amp;[<span class="string">b&quot;seed&quot;</span>], program_id);</span><br></pre></td></tr></table></figure>
+
+<p>特点：</p>
+<ul>
+<li>无私钥（由程序推导），不可被任何人直接签名。</li>
+<li>程序内部可通过 <code>invoke_signed</code> 操作 PDA。</li>
+</ul>
+<h4 id="PDA的应用场景"><a href="#PDA的应用场景" class="headerlink" title="PDA的应用场景"></a>PDA的应用场景</h4><table>
+<thead>
+<tr>
+<th>你要做的事情</th>
+<th>要不要用 PDA？</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>给每个用户一个账户（唯一）</td>
+<td>✅ 非常适合</td>
+</tr>
+<tr>
+<td>建一个程序自己的配置仓库</td>
+<td>✅ 必须</td>
+</tr>
+<tr>
+<td>自动生成地址，避免冲突</td>
+<td>✅ 这是 PDA 最强的地方</td>
+</tr>
+<tr>
+<td>不希望用户自己动数据</td>
+<td>✅ 因为 PDA 没私钥</td>
+</tr>
+<tr>
+<td>想让程序能随时找到账户</td>
+<td>✅ 公式可推导，永远能找回</td>
+</tr>
+</tbody></table>
+<h3 id="账户生命周期"><a href="#账户生命周期" class="headerlink" title="账户生命周期"></a>账户生命周期</h3><ul>
+<li><strong>创建：</strong> 由 <code>system_program::create_account</code> 创建，指定 owner、space、lamports。</li>
+<li><strong>初始化：</strong> 由程序使用 <code>#[account(init)]</code> 等方式赋值。</li>
+<li><strong>使用：</strong> 程序读取或修改数据。</li>
+<li><strong>关闭（可选）：</strong> 将剩余 lamports 转给其他账户，释放数据空间。</li>
+</ul>
+<h3 id="账户模型示例图"><a href="#账户模型示例图" class="headerlink" title="账户模型示例图"></a>账户模型示例图</h3><figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">用户钱包地址 (系统账户)</span><br><span class="line">      |</span><br><span class="line">      V</span><br><span class="line">调用程序（合约）</span><br><span class="line">      |</span><br><span class="line">      V</span><br><span class="line">操作目标账户（MyDataAccount）</span><br><span class="line">    - owner: 程序地址</span><br><span class="line">    - data: 结构体序列化后的数据</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="账户结构关系图"><a href="#账户结构关系图" class="headerlink" title="账户结构关系图"></a>账户结构关系图</h3><figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">+----------------+</span><br><span class="line">|  User Wallet   |  &lt;-- 私钥控制，用于签名交易</span><br><span class="line">+----------------+</span><br><span class="line">         |</span><br><span class="line">  signs &amp; sends tx</span><br><span class="line">         |</span><br><span class="line">         v</span><br><span class="line">+--------------------+</span><br><span class="line">|  Program Account   |  &lt;-- 已部署合约代码</span><br><span class="line">+--------------------+</span><br><span class="line">         |</span><br><span class="line"> creates / uses PDA</span><br><span class="line">         |</span><br><span class="line">         v</span><br><span class="line">+--------------------+</span><br><span class="line">|    PDA Account     |  &lt;-- 由Program + Seed生成</span><br><span class="line">+--------------------+</span><br><span class="line">         |</span><br><span class="line">         v</span><br><span class="line">+--------------------+</span><br><span class="line">|     Mint Account   |  &lt;-- SPL代币信息：总量、精度等</span><br><span class="line">+--------------------+</span><br><span class="line">         |</span><br><span class="line">         v</span><br><span class="line">+--------------------+         +-------------------------------+</span><br><span class="line">|   Token Account    | &lt;----<span class="punctuation">-&gt;</span> |  Associated Token <span class="title function_ invoke__">Account</span>(ATA)|</span><br><span class="line">+--------------------+         +-------------------------------+</span><br><span class="line">         ^                                  ^</span><br><span class="line">         |                                  |</span><br><span class="line">  holds balance                     派生规则：Wallet+Mint+TokenProgram</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>Author: </span><span class="post-copyright-info"><a href="https://just-gol.github.io">Li</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>Link: </span><span class="post-copyright-info"><a href="https://just-gol.github.io/2025/07/24/%E8%B4%A6%E6%88%B7%E7%AE%80%E5%8D%95%E4%BA%A4%E4%BA%92/">https://just-gol.github.io/2025/07/24/%E8%B4%A6%E6%88%B7%E7%AE%80%E5%8D%95%E4%BA%A4%E4%BA%92/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>Copyright Notice: </span><span class="post-copyright-info">All articles on this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless otherwise stated.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Solana/">Solana</a></div><div class="post-share"><div class="social-share" data-image="/img/butterfly-icon.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2025/07/17/solana%E5%BC%80%E5%8F%91%E5%85%A5%E9%97%A8/" title="solana开发入门"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">Previous</div><div class="info-item-2">solana开发入门</div></div><div class="info-2"><div class="info-item-1">创建Anchor项目执行 anchor init xxx 失败12lsy@WIN-20240703PSE:~$ anchor init todoError: yarn install failed: No such file or directory (os error 2)  需要安装  先确保系统安装了 Node.js 和 npm    1npm install -g yarn  检查 yarn 是否已安装1yarn -v  tests文件报错 安装 TypeScript 端的 Anchor SDK   12yarn install         # 安装依赖（或者 npm install）anchor build         # 构建合约，生成 target/types  anchor build报错123456lsy@WIN-20240703PSE:~$ anchor --versionanchor-cli 0.31.1lsy@WIN-20240703PSE:~$ cargo --versioncargo 1.90.0-nightly (930b4f62c...</div></div></div></a><a class="pagination-related" href="/2025/07/24/SPL%20Token/" title="SPL Token"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">Next</div><div class="info-item-2">SPL Token</div></div><div class="info-2"><div class="info-item-1">solana上的代币 代币是代表对各种资产所有权的数字资产。 代币化使得财产权的数字化成为可能，是管理 可替代和不可替代资产的基本组成部分。 可替代代币代表同类型和同价值的可互换和可分割资产（例如 USDC）。 不可替代代币（NFT）代表不可分割资产的所有权（例如艺术品）。    SPL (Solana Program Library) 代币程序（Token Program）包含与网络上的代币（包括可替代和不 可替代）交互的所有指令逻辑。 铸造账户（Mint Account）代表一种特定类型的代币，并存储关于代 币的全局元数据，如总供应量和铸造权限（有权创建新代币单位的地址）。 代币账户（Token Account）跟踪特定地址拥有的特定类型代币（铸 造账户）的单位数量。  SPL TOKEN创建Mint Account 铸币账户spl-token create-token 1234567lsy@WIN-20240703PSE:~$ spl-token create-tokenCreating token...</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>Related Articles</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/2025/07/24/SPL%20Token%E7%AE%80%E5%8D%95%E5%90%88%E7%BA%A6/" title="SPL Token简单合约"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-07-24</div><div class="info-item-2">SPL Token简单合约</div></div><div class="info-2"><div class="info-item-1">Token合约12cargo build-sbfsolana program deploy ./target/sbpf-solana-solana/release/token.so  整体结构快速总结123456789// 入口逻辑Processor::process(...) -&gt; 解析指令 -&gt; TokenInstruction::CreateToken or Mint -&gt; 调用具体函数// 创建 Token 的 Mint 账户fn create_token(...) &#123;...&#125;// 向 ATA 账户铸币fn mint_token(...) &#123;...&#125;  外部依赖包说明1234use borsh::BorshDeserialize; // 解析指令数据（instruction_data）用use solana_program::*;       // Solana 原生命令和账户系统use spl_token::*;            // Token 标准相关指令，如...</div></div></div></a><a class="pagination-related" href="/2025/07/16/solana%E5%AE%89%E8%A3%85/" title="solana安装"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-07-16</div><div class="info-item-2">solana安装</div></div><div class="info-2"><div class="info-item-1">本地环境搭建linux123456sudo apt-get updatesudo apt-get install -y \build-essential \pkg-config \libudev-dev llvm libclang-dev \protobuf-compiler libssl-dev  macos12xcode-select -p # check if installedxcode-select --install # install  Rust环境安装 如果已经安装忽略  1curl --proto &#x27;=https&#x27; --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y  Solana-cli安装 建议安装新版本  12sh -c &quot;$(curl -sSfL https://release.anza.xyz/stable/install)&quot;sh -c &quot;$(curl -sSfL...</div></div></div></a><a class="pagination-related" href="/2025/07/17/solana%E5%BC%80%E5%8F%91%E5%85%A5%E9%97%A8/" title="solana开发入门"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-07-17</div><div class="info-item-2">solana开发入门</div></div><div class="info-2"><div class="info-item-1">创建Anchor项目执行 anchor init xxx 失败12lsy@WIN-20240703PSE:~$ anchor init todoError: yarn install failed: No such file or directory (os error 2)  需要安装  先确保系统安装了 Node.js 和 npm    1npm install -g yarn  检查 yarn 是否已安装1yarn -v  tests文件报错 安装 TypeScript 端的 Anchor SDK   12yarn install         # 安装依赖（或者 npm install）anchor build         # 构建合约，生成 target/types  anchor build报错123456lsy@WIN-20240703PSE:~$ anchor --versionanchor-cli 0.31.1lsy@WIN-20240703PSE:~$ cargo --versioncargo 1.90.0-nightly (930b4f62c...</div></div></div></a><a class="pagination-related" href="/2025/07/24/%E9%93%BE%E4%B8%8A%E8%B4%A6%E6%88%B7%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E6%A0%87%E5%87%86%E6%B5%81%E7%A8%8B/" title="链上账户生命周期标准流程"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-07-24</div><div class="info-item-2">链上账户生命周期标准流程</div></div><div class="info-2"><div class="info-item-1">✅ 使用场景创建一个 PDA（Program Derived Address）来存储用户自定义的数据结构，如关注列表、发布内容、打分数据等。  🧱 链上账户生命周期标准流程🔢 1. 反序列化指令参数1let instruction = MyInstruction::try_from_slice(instruction_data)?;  判断当前指令是 Init、Add 还是 Query 等。  🔢 2. 获取账户 AccountInfo 列表1234let accounts_iter = &amp;mut accounts.iter();let payer = next_account_info(accounts_iter)?;let pda_account = next_account_info(accounts_iter)?;let system_program = next_account_info(accounts_iter)?;   📍 3. 计算 PDA、公钥验证12let (pda, bump) =...</div></div></div></a></div></div><!-- if page.comments !== false && theme.comments.use--><!--   - var commentsJsLoad = true--><!--   !=partial('includes/third-party/comments/index', {}, {cache: true})--><!-- ✅ 来必力评论框（正确位置，缩进无误）--><div id="lv-container" data-id="city" data-uid="MTAyMC82MDc5NS8zNzI2NQ=="></div><script>(function(d, s) {
+  var j, e = d.getElementsByTagName(s)[0];
+  if (typeof LivereTower === 'function') { return; }
+  j = d.createElement(s);
+  j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+  j.async = true;
+  e.parentNode.insertBefore(j, e);
+})(document, 'script');</script><noscript>为正常使用来必力评论功能请激活 JavaScript</noscript></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/butterfly-icon.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Li</div><div class="author-info-description"></div><div class="site-data"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">35</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">4</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/just-gol/"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Contents</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Solana-%E8%B4%A6%E6%88%B7%E6%A8%A1%E5%9E%8B%E6%A6%82%E8%A7%88"><span class="toc-number">1.</span> <span class="toc-text">Solana 账户模型概览</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B4%A6%E6%88%B7%E7%9A%84%E7%BB%93%E6%9E%84"><span class="toc-number">2.</span> <span class="toc-text">账户的结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B4%A6%E6%88%B7%E7%9A%84%E5%88%86%E7%B1%BB"><span class="toc-number">3.</span> <span class="toc-text">账户的分类</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E8%B4%A6%E6%88%B7%EF%BC%88System-Account%EF%BC%89"><span class="toc-number">3.1.</span> <span class="toc-text">系统账户（System Account）</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%89%B9%E7%82%B9"><span class="toc-number">3.1.1.</span> <span class="toc-text">特点</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B"><span class="toc-number">3.1.2.</span> <span class="toc-text">示例</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F%E8%B4%A6%E6%88%B7%EF%BC%88Program-Account%EF%BC%89"><span class="toc-number">3.2.</span> <span class="toc-text">程序账户（Program Account）</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%89%B9%E7%82%B9-1"><span class="toc-number">3.2.1.</span> <span class="toc-text">特点</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B-1"><span class="toc-number">3.2.2.</span> <span class="toc-text">示例</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E8%B4%A6%E6%88%B7%EF%BC%88Data-Account%EF%BC%89"><span class="toc-number">3.3.</span> <span class="toc-text">数据账户（Data Account）</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%89%B9%E7%82%B9-2"><span class="toc-number">3.3.1.</span> <span class="toc-text">特点</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B-2"><span class="toc-number">3.3.2.</span> <span class="toc-text">示例</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#PDA-%E8%B4%A6%E6%88%B7%EF%BC%88Program-Derived-Address%EF%BC%89"><span class="toc-number">3.4.</span> <span class="toc-text">PDA 账户（Program Derived Address）</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#anchor%E5%88%9B%E5%BB%BApda%E8%B4%A6%E6%88%B7"><span class="toc-number">3.4.1.</span> <span class="toc-text">anchor创建pda账户</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%89%B9%E7%82%B9-3"><span class="toc-number">3.4.2.</span> <span class="toc-text">特点</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B-3"><span class="toc-number">3.4.3.</span> <span class="toc-text">示例</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9E%E9%99%85%E5%BC%80%E5%8F%91%E4%B8%AD%E5%B8%B8%E8%A7%81%E5%9C%BA%E6%99%AF"><span class="toc-number">3.5.</span> <span class="toc-text">实际开发中常见场景</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B4%A6%E6%88%B7%E6%93%8D%E4%BD%9C"><span class="toc-number">4.</span> <span class="toc-text">账户操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Solana-%E7%A8%8B%E5%BA%8F%E4%B8%8E%E8%B4%A6%E6%88%B7%E4%BA%A4%E4%BA%92%E6%9C%BA%E5%88%B6%EF%BC%88ctx%EF%BC%89"><span class="toc-number">5.</span> <span class="toc-text">Solana 程序与账户交互机制（ctx）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PDA%EF%BC%88Program-Derived-Addresses%EF%BC%89"><span class="toc-number">6.</span> <span class="toc-text">PDA（Program Derived Addresses）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#PDA%E7%9A%84%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-number">6.1.</span> <span class="toc-text">PDA的应用场景</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B4%A6%E6%88%B7%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="toc-number">7.</span> <span class="toc-text">账户生命周期</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B4%A6%E6%88%B7%E6%A8%A1%E5%9E%8B%E7%A4%BA%E4%BE%8B%E5%9B%BE"><span class="toc-number">8.</span> <span class="toc-text">账户模型示例图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B4%A6%E6%88%B7%E7%BB%93%E6%9E%84%E5%85%B3%E7%B3%BB%E5%9B%BE"><span class="toc-number">9.</span> <span class="toc-text">账户结构关系图</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Posts</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/07/24/%E9%93%BE%E4%B8%8A%E8%B4%A6%E6%88%B7%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E6%A0%87%E5%87%86%E6%B5%81%E7%A8%8B/" title="链上账户生命周期标准流程">链上账户生命周期标准流程</a><time datetime="2025-07-24T07:27:58.000Z" title="Created 2025-07-24 15:27:58">2025-07-24</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/07/24/SPL%20Token%E7%AE%80%E5%8D%95%E5%90%88%E7%BA%A6/" title="SPL Token简单合约">SPL Token简单合约</a><time datetime="2025-07-24T07:27:16.000Z" title="Created 2025-07-24 15:27:16">2025-07-24</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/07/24/SPL%20Token/" title="SPL Token">SPL Token</a><time datetime="2025-07-24T07:24:39.000Z" title="Created 2025-07-24 15:24:39">2025-07-24</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/07/24/%E8%B4%A6%E6%88%B7%E7%AE%80%E5%8D%95%E4%BA%A4%E4%BA%92/" title="账户简单交互">账户简单交互</a><time datetime="2025-07-24T07:21:58.000Z" title="Created 2025-07-24 15:21:58">2025-07-24</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/07/17/solana%E5%BC%80%E5%8F%91%E5%85%A5%E9%97%A8/" title="solana开发入门">solana开发入门</a><time datetime="2025-07-17T09:16:39.000Z" title="Created 2025-07-17 17:16:39">2025-07-17</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2025 By Li</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.3.5</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Reading Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light and Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle Between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Settings"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back to Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

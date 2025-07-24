@@ -1,0 +1,306 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>SPL Token | my blog</title><meta name="author" content="Li"><meta name="copyright" content="Li"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="solana上的代币 代币是代表对各种资产所有权的数字资产。 代币化使得财产权的数字化成为可能，是管理 可替代和不可替代资产的基本组成部分。 可替代代币代表同类型和同价值的可互换和可分割资产（例如 USDC）。 不可替代代币（NFT）代表不可分割资产的所有权（例如艺术品）。    SPL (Solana Program Library) 代币程序（Token Program）包含与网络上的代币（包">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SPL Token">
+<meta property="og:url" content="https://just-gol.github.io/2025/07/24/SPL%20Token/index.html">
+<meta property="og:site_name" content="my blog">
+<meta property="og:description" content="solana上的代币 代币是代表对各种资产所有权的数字资产。 代币化使得财产权的数字化成为可能，是管理 可替代和不可替代资产的基本组成部分。 可替代代币代表同类型和同价值的可互换和可分割资产（例如 USDC）。 不可替代代币（NFT）代表不可分割资产的所有权（例如艺术品）。    SPL (Solana Program Library) 代币程序（Token Program）包含与网络上的代币（包">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://just-gol.github.io/img/butterfly-icon.png">
+<meta property="article:published_time" content="2025-07-24T07:24:39.000Z">
+<meta property="article:modified_time" content="2025-07-24T07:25:43.950Z">
+<meta property="article:author" content="Li">
+<meta property="article:tag" content="Solan">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://just-gol.github.io/img/butterfly-icon.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "SPL Token",
+  "url": "https://just-gol.github.io/2025/07/24/SPL%20Token/",
+  "image": "https://just-gol.github.io/img/butterfly-icon.png",
+  "datePublished": "2025-07-24T07:24:39.000Z",
+  "dateModified": "2025-07-24T07:25:43.950Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "Li",
+      "url": "https://just-gol.github.io/"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://just-gol.github.io/2025/07/24/SPL%20Token/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Failed',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'SPL Token',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">my blog</span></a><a class="nav-page-title" href="/"><span class="site-name">SPL Token</span></a></span><div id="menus"></div></nav><div id="post-info"><h1 class="post-title">SPL Token</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2025-07-24T07:24:39.000Z" title="Created 2025-07-24 15:24:39">2025-07-24</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2025-07-24T07:25:43.950Z" title="Updated 2025-07-24 15:25:43">2025-07-24</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post Views:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h3 id="solana上的代币"><a href="#solana上的代币" class="headerlink" title="solana上的代币"></a>solana上的代币</h3><ul>
+<li>代币是代表对各种资产所有权的数字资产。 代币化使得财产权的数字化成为可能，是管理 可替代和不可替代资产的基本组成部分。<ul>
+<li>可替代代币代表同类型和同价值的可互换和可分割资产（例如 USDC）。</li>
+<li>不可替代代币（NFT）代表不可分割资产的所有权（例如艺术品）。</li>
+</ul>
+</li>
+</ul>
+<h3 id="SPL-Solana-Program-Library"><a href="#SPL-Solana-Program-Library" class="headerlink" title="SPL (Solana Program Library)"></a>SPL (Solana Program Library)</h3><ul>
+<li>代币程序（Token Program）包含与网络上的代币（包括可替代和不 可替代）交互的所有指令逻辑。</li>
+<li>铸造账户（Mint Account）代表一种特定类型的代币，并存储关于代 币的全局元数据，如总供应量和铸造权限（有权创建新代币单位的地址）。</li>
+<li>代币账户（Token Account）跟踪特定地址拥有的特定类型代币（铸 造账户）的单位数量。</li>
+</ul>
+<h3 id="SPL-TOKEN"><a href="#SPL-TOKEN" class="headerlink" title="SPL TOKEN"></a>SPL TOKEN</h3><h4 id="创建Mint-Account-铸币账户"><a href="#创建Mint-Account-铸币账户" class="headerlink" title="创建Mint Account 铸币账户"></a>创建Mint Account 铸币账户</h4><p>spl-token create-token</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">lsy@WIN-20240703PSE:~$ spl-token create-token</span><br><span class="line">Creating token FNUJxCihY9EVZBt5U3Vk6E1HTPhhjCFiViKmgSUabjyS under program TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA</span><br><span class="line"></span><br><span class="line">Address:  FNUJxCihY9EVZBt5U3Vk6E1HTPhhjCFiViKmgSUabjyS</span><br><span class="line">Decimals:  9</span><br><span class="line"></span><br><span class="line">Signature: 2zh1FjF9xDMeNTDN3wuY3pHa57qH7u1JMSHtUnrC6QtMqsQD599vwqVc2t7dmvD79DUy4BFW2uNpN1TBX1mkH2Ak</span><br></pre></td></tr></table></figure>
+
+<h5 id="查看token"><a href="#查看token" class="headerlink" title="查看token"></a>查看token</h5><p> spl-token account-info –address FNUJxCihY9EVZBt5U3Vk6E1HTPhhjCFiViKmgSUabjyS<font style="color:#DF2A3F;">(token地址)</font></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">lsy@WIN-20240703PSE:~$ spl-token account-info --address FNUJxCihY9EVZBt5U3Vk6E1HTPhhjCFiViKmgSUabjyS</span><br><span class="line">SPL Token Mint</span><br><span class="line">  Address: FNUJxCihY9EVZBt5U3Vk6E1HTPhhjCFiViKmgSUabjyS</span><br><span class="line">  Program: TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA</span><br><span class="line">  Supply: 0</span><br><span class="line">  Decimals: 9</span><br><span class="line">  Mint authority: ipwacQbTTWbfu6VnUyxdDDG8rwGvRjpqenzC6M2Bdys</span><br><span class="line">  Freeze authority: (not <span class="built_in">set</span>)</span><br></pre></td></tr></table></figure>
+
+<h4 id="创建-ATA-token-account-关联代币账户"><a href="#创建-ATA-token-account-关联代币账户" class="headerlink" title="创建 ATA token account 关联代币账户"></a>创建 ATA token account 关联代币账户</h4><p>spl-token create-account  FNUJxCihY9EVZBt5U3Vk6E1HTPhhjCFiViKmgSUabjyS<font style="color:#DF2A3F;">(token地址)</font></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">lsy@WIN-20240703PSE:~$ spl-token create-account FNUJxCihY9EVZBt5U3Vk6E1HTPhhjCFiViKmgSUabjyS</span><br><span class="line">Creating account 46foWrk6GyX84vCr8vvUmBLjHAVvcFdfKbHkrAEq57WH</span><br><span class="line"></span><br><span class="line">Signature: s3p2gZvDJ72B3Yg8eLZCbDB2RH1idZcdXxArzCUKUrB1hhUqXW8wW4X5d3w75NXaNtBFETZk58etAms45uBChA6</span><br></pre></td></tr></table></figure>
+
+<h5 id="空投"><a href="#空投" class="headerlink" title="空投"></a>空投</h5><p>mint账户是Mint Account账户会自动关联到ATA账户</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">lsy@WIN-20240703PSE:~$ spl-token mint FNUJxCihY9EVZBt5U3Vk6E1HTPhhjCFiViKmgSUabjyS 100</span><br><span class="line">Minting 100 tokens</span><br><span class="line">  Token: FNUJxCihY9EVZBt5U3Vk6E1HTPhhjCFiViKmgSUabjyS</span><br><span class="line">  Recipient: 46foWrk6GyX84vCr8vvUmBLjHAVvcFdfKbHkrAEq57WH <span class="comment">#ATA账户</span></span><br><span class="line"></span><br><span class="line">Signature: 2HzvyhRzocnVQvr7c8DU2TUruopsJK61bPdsfsMMXM4</span><br></pre></td></tr></table></figure>
+
+<h4 id="Token-Account-代币账户"><a href="#Token-Account-代币账户" class="headerlink" title="Token Account 代币账户"></a>Token Account 代币账户</h4><p>spl-token create-account FNUJxCihY9EVZBt5U3Vk6E1HTPhhjCFiViKmgSUabjyS &#x2F;home&#x2F;lsy&#x2F;.config&#x2F;solana&#x2F;wallet2.json<font style="color:#DF2A3F;">(私钥要和上面不同)</font></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">lsy@WIN-20240703PSE:~$ spl-token create-account FNUJxCihY9EVZBt5U3Vk6E1HTPhhjCFiViKmgSUabjyS /home/lsy/.config/solana/wallet2.json</span><br><span class="line">Creating account 6C4mMZegCHZJMzbhhdCLDSigSJjjCCdvRKkJvfAD8Yy7</span><br><span class="line"></span><br><span class="line">Signature: WbuG4dirbzF8cjJU3Z36v1oeMBy4adcfQkanj6BS5xiWPqQSnJrYjxQ35di8Y93vxfu5uFnTQcFtzZisKNx84eL</span><br></pre></td></tr></table></figure>
+
+<h5 id="空投-1"><a href="#空投-1" class="headerlink" title="空投"></a>空投</h5><p>mint账户是Mint Account账户给Tokan Account mint需要指定token account账户通过 <font style="color:#DF2A3F;">–</font> 指定</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">lsy@WIN-20240703PSE:~$ spl-token mint FNUJxCihY9EVZBt5U3Vk6E1HTPhhjCFiViKmgSUabjyS 100 -- 6C4mMZegCHZJMzbhhdCLDSigSJjjCCdvRKkJvfAD8Yy7</span><br><span class="line">Minting 100 tokens</span><br><span class="line">  Token: FNUJxCihY9EVZBt5U3Vk6E1HTPhhjCFiViKmgSUabjyS</span><br><span class="line">  Recipient: 6C4mMZegCHZJMzbhhdCLDSigSJjjCCdvRKkJvfAD8Yy7</span><br><span class="line"></span><br><span class="line">Signature: 33HpzfuXY2qMdMk2sxfEDwJhVLm8uG9J2DRCCYtjdV7U7uAu9RmpstPPGquVi5WU3t485snE8Q7H4sxu8Vi7d8JE</span><br></pre></td></tr></table></figure>
+
+<h3 id="账户之间的关系"><a href="#账户之间的关系" class="headerlink" title="账户之间的关系"></a>账户之间的关系</h3><blockquote>
+<p><strong>Mint Account 是“造币机”</strong>，<br><strong>Token Account 是“钱包”</strong>，<br><strong>关联代币账户（Associated Token Account, ATA）是“用户默认的钱包地址”</strong>。</p>
+</blockquote>
+<h4 id="Mint-Account（铸币账户）"><a href="#Mint-Account（铸币账户）" class="headerlink" title="Mint Account（铸币账户）"></a>Mint Account（铸币账户）</h4><ul>
+<li><strong>作用：</strong> 定义一种 Token 的基本属性，比如：<ul>
+<li>小数位数（decimals）</li>
+<li>谁是铸币人（mint authority）</li>
+<li>Token 总供应量（supply）</li>
+<li>是否允许冻结（freeze authority）</li>
+</ul>
+</li>
+<li><strong>结构体：</strong><code>spl_token::state::Mint</code></li>
+<li><strong>一个 Token 一个 Mint</strong></li>
+<li>**Mint 是造币机，它本身不接收 Token  **</li>
+</ul>
+<p>✅ 举例：USDC、SOL、LSY Token，每种 Token 都有一个独立的 Mint。</p>
+<hr>
+<h4 id="Token-Account（代币账户）"><a href="#Token-Account（代币账户）" class="headerlink" title="Token Account（代币账户）"></a>Token Account（代币账户）</h4><ul>
+<li><strong>作用：</strong> 表示「某个地址持有某种 Token 的多少数量」。</li>
+<li><strong>每个 Token Account 只能对应一个 Token（mint）</strong>。</li>
+<li><strong>结构体：</strong><code>spl_token::state::Account</code></li>
+<li><strong>你可以拥有多个 Token Account 来装同一个 Token。</strong></li>
+</ul>
+<p>✅ 举例：</p>
+<ul>
+<li>你有两个 USDC 钱包，分别存在不同 Token Account 中。</li>
+<li>也可以转账到别人的 Token Account，只要 mint 匹配就行。</li>
+</ul>
+<hr>
+<h4 id="关联代币账户（ATA：Associated-Token-Account）"><a href="#关联代币账户（ATA：Associated-Token-Account）" class="headerlink" title="关联代币账户（ATA：Associated Token Account）"></a>关联代币账户（ATA：Associated Token Account）</h4><ul>
+<li><strong>作用：</strong> 给你提供一个「固定格式」的钱包地址，专门用来接收某种 Token。</li>
+<li>ATA 是 “用户对某个 mint（Token）” 的默认接收账户  </li>
+<li><strong>它是 PDA（程序派生地址）</strong>，地址可以预测，规则如下：</li>
+</ul>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ATA = <span class="title function_ invoke__">hash</span>(user_wallet_address, token_mint, Token Program ID)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>所以：<ul>
+<li>每个用户对每种 Token 只有一个 ATA</li>
+<li>大多数 DApp 和钱包默认只支持 ATA</li>
+</ul>
+</li>
+</ul>
+<p>✅ 举例：</p>
+<p>你是用户 <code>A</code>，想接收 <code>LSY Token</code>，你就自动有一个 ATA，别人转账会转到这个 ATA。</p>
+<hr>
+<h4 id="三者之间的关系图（类比现实生活）："><a href="#三者之间的关系图（类比现实生活）：" class="headerlink" title="三者之间的关系图（类比现实生活）："></a>三者之间的关系图（类比现实生活）：</h4><table>
+<thead>
+<tr>
+<th>名称</th>
+<th>比喻</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Mint Account</td>
+<td>造币厂</td>
+<td>定义一类 Token 的规则（如 USDC、LSY）</td>
+</tr>
+<tr>
+<td>Token Account</td>
+<td>多个钱包账户</td>
+<td>用户存放某种 Token 的地址</td>
+</tr>
+<tr>
+<td>ATA（关联账户）</td>
+<td>默认主钱包地址</td>
+<td>系统自动生成的“标准钱包地址”，只能有一个</td>
+</tr>
+</tbody></table>
+<hr>
+<h4 id="举个通俗例子："><a href="#举个通俗例子：" class="headerlink" title="举个通俗例子："></a>举个通俗例子：</h4><p>假设你发行了自己的 Token 叫做 <code>LSY Coin</code>：</p>
+<ul>
+<li>你创建了一个 <strong>Mint Account</strong>：专门负责管理 <code>LSY</code> 的铸造、销毁。</li>
+<li>张三想持有你的 <code>LSY Coin</code>，他需要一个 <strong>Token Account</strong>。</li>
+<li>为了方便，系统自动为张三生成了一个 <strong>ATA</strong>（其实就是一个 Token Account，但地址固定、自动生成）。</li>
+</ul>
+<hr>
+<h4 id="使用场景对照："><a href="#使用场景对照：" class="headerlink" title="使用场景对照："></a>使用场景对照：</h4><table>
+<thead>
+<tr>
+<th>你要做的事</th>
+<th>用到的账户类型</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>创建新 Token</td>
+<td><code>Mint Account</code></td>
+</tr>
+<tr>
+<td>给用户发 Token</td>
+<td>用户的 <code>Token Account</code></td>
+</tr>
+<tr>
+<td>自动获取用户接收地址</td>
+<td><code>Associated Token Account (ATA)</code></td>
+</tr>
+<tr>
+<td>查某人有多少某 Token</td>
+<td>查他的 Token Account（通常是 ATA）</td>
+</tr>
+</tbody></table>
+<hr>
+<h4 id="地址关系示意："><a href="#地址关系示意：" class="headerlink" title="地址关系示意："></a>地址关系示意：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">┌────────────────────┐</span><br><span class="line">│     Mint Account    │ ← 定义 Token 类型（如 USDC）</span><br><span class="line">│ - decimals          │</span><br><span class="line">│ - supply            │</span><br><span class="line">│ - mint authority    │</span><br><span class="line">└─────────┬──────────┘</span><br><span class="line">          │</span><br><span class="line">          ▼</span><br><span class="line"> ┌─────────────────────────────┐</span><br><span class="line"> │     User Token Account（ATA）│ ← 用户的钱包（专收这个 Token）</span><br><span class="line"> │ - amount: 100               │</span><br><span class="line"> │ - mint: MintAccount         │</span><br><span class="line"> │ - owner: 用户地址            │</span><br><span class="line"> └─────────────────────────────┘</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h4 id="总结一句话："><a href="#总结一句话：" class="headerlink" title="总结一句话："></a>总结一句话：</h4><p><strong>Mint Account 定义了 Token 本身，Token Account 是存 Token 的钱包，ATA 是你默认的、固定格式的钱包地址。</strong></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>Author: </span><span class="post-copyright-info"><a href="https://just-gol.github.io">Li</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>Link: </span><span class="post-copyright-info"><a href="https://just-gol.github.io/2025/07/24/SPL%20Token/">https://just-gol.github.io/2025/07/24/SPL%20Token/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>Copyright Notice: </span><span class="post-copyright-info">All articles on this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless otherwise stated.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Solan/">Solan</a></div><div class="post-share"><div class="social-share" data-image="/img/butterfly-icon.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2025/07/24/%E8%B4%A6%E6%88%B7%E7%AE%80%E5%8D%95%E4%BA%A4%E4%BA%92/" title="账户简单交互"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">Previous</div><div class="info-item-2">账户简单交互</div></div><div class="info-2"><div class="info-item-1">Solana 账户模型概览 Solana 没有以太坊中那种“拥有逻辑的合约账户”，而是将数据和逻辑分离：      类型 说明    账户（Account） 存储状态的数据容器，没有代码逻辑。   程序（Program） 纯逻辑代码，是只读的（不可更改的代码），负责操作账户数据。   🧾 #[account] pub struct Xxx 是程序内部定义的账户数据结构说明书，它对应链上某个账户的 data 字节布局； 🧠 程序（Program）是部署在 Solana 上的智能合约，控制对账户数据的读写，是 executable = true 的特殊账户。   账户的结构1234567Account &#123;  lamports: u64,             // 当前账户余额（以 lamport 计，1 SOL = 10^9 lamport）  owner: Pubkey,             // 控制该账户的程序（程序的公钥）  data: Vec&lt;u8&gt;,             // 账户中存储的二进制数据（最多可被一个程序解释） ...</div></div></div></a><a class="pagination-related" href="/2025/07/24/SPL%20Token%E7%AE%80%E5%8D%95%E5%90%88%E7%BA%A6/" title="SPL Token简单合约"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">Next</div><div class="info-item-2">SPL Token简单合约</div></div><div class="info-2"><div class="info-item-1">Token合约12cargo build-sbfsolana program deploy ./target/sbpf-solana-solana/release/token.so  整体结构快速总结123456789// 入口逻辑Processor::process(...) -&gt; 解析指令 -&gt; TokenInstruction::CreateToken or Mint -&gt; 调用具体函数// 创建 Token 的 Mint 账户fn create_token(...) &#123;...&#125;// 向 ATA 账户铸币fn mint_token(...) &#123;...&#125;  外部依赖包说明1234use borsh::BorshDeserialize; // 解析指令数据（instruction_data）用use solana_program::*;       // Solana 原生命令和账户系统use spl_token::*;            // Token 标准相关指令，如...</div></div></div></a></nav><!-- if page.comments !== false && theme.comments.use--><!--   - var commentsJsLoad = true--><!--   !=partial('includes/third-party/comments/index', {}, {cache: true})--><!-- ✅ 来必力评论框（正确位置，缩进无误）--><div id="lv-container" data-id="city" data-uid="MTAyMC82MDc5NS8zNzI2NQ=="></div><script>(function(d, s) {
+  var j, e = d.getElementsByTagName(s)[0];
+  if (typeof LivereTower === 'function') { return; }
+  j = d.createElement(s);
+  j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+  j.async = true;
+  e.parentNode.insertBefore(j, e);
+})(document, 'script');</script><noscript>为正常使用来必力评论功能请激活 JavaScript</noscript></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/butterfly-icon.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Li</div><div class="author-info-description"></div><div class="site-data"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">35</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">4</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/just-gol/"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Contents</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#solana%E4%B8%8A%E7%9A%84%E4%BB%A3%E5%B8%81"><span class="toc-number">1.</span> <span class="toc-text">solana上的代币</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SPL-Solana-Program-Library"><span class="toc-number">2.</span> <span class="toc-text">SPL (Solana Program Library)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SPL-TOKEN"><span class="toc-number">3.</span> <span class="toc-text">SPL TOKEN</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%9B%E5%BB%BAMint-Account-%E9%93%B8%E5%B8%81%E8%B4%A6%E6%88%B7"><span class="toc-number">3.1.</span> <span class="toc-text">创建Mint Account 铸币账户</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8Btoken"><span class="toc-number">3.1.1.</span> <span class="toc-text">查看token</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA-ATA-token-account-%E5%85%B3%E8%81%94%E4%BB%A3%E5%B8%81%E8%B4%A6%E6%88%B7"><span class="toc-number">3.2.</span> <span class="toc-text">创建 ATA token account 关联代币账户</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%A9%BA%E6%8A%95"><span class="toc-number">3.2.1.</span> <span class="toc-text">空投</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Token-Account-%E4%BB%A3%E5%B8%81%E8%B4%A6%E6%88%B7"><span class="toc-number">3.3.</span> <span class="toc-text">Token Account 代币账户</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%A9%BA%E6%8A%95-1"><span class="toc-number">3.3.1.</span> <span class="toc-text">空投</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B4%A6%E6%88%B7%E4%B9%8B%E9%97%B4%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="toc-number">4.</span> <span class="toc-text">账户之间的关系</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Mint-Account%EF%BC%88%E9%93%B8%E5%B8%81%E8%B4%A6%E6%88%B7%EF%BC%89"><span class="toc-number">4.1.</span> <span class="toc-text">Mint Account（铸币账户）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Token-Account%EF%BC%88%E4%BB%A3%E5%B8%81%E8%B4%A6%E6%88%B7%EF%BC%89"><span class="toc-number">4.2.</span> <span class="toc-text">Token Account（代币账户）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%B3%E8%81%94%E4%BB%A3%E5%B8%81%E8%B4%A6%E6%88%B7%EF%BC%88ATA%EF%BC%9AAssociated-Token-Account%EF%BC%89"><span class="toc-number">4.3.</span> <span class="toc-text">关联代币账户（ATA：Associated Token Account）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%89%E8%80%85%E4%B9%8B%E9%97%B4%E7%9A%84%E5%85%B3%E7%B3%BB%E5%9B%BE%EF%BC%88%E7%B1%BB%E6%AF%94%E7%8E%B0%E5%AE%9E%E7%94%9F%E6%B4%BB%EF%BC%89%EF%BC%9A"><span class="toc-number">4.4.</span> <span class="toc-text">三者之间的关系图（类比现实生活）：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%BE%E4%B8%AA%E9%80%9A%E4%BF%97%E4%BE%8B%E5%AD%90%EF%BC%9A"><span class="toc-number">4.5.</span> <span class="toc-text">举个通俗例子：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF%E5%AF%B9%E7%85%A7%EF%BC%9A"><span class="toc-number">4.6.</span> <span class="toc-text">使用场景对照：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9C%B0%E5%9D%80%E5%85%B3%E7%B3%BB%E7%A4%BA%E6%84%8F%EF%BC%9A"><span class="toc-number">4.7.</span> <span class="toc-text">地址关系示意：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%80%BB%E7%BB%93%E4%B8%80%E5%8F%A5%E8%AF%9D%EF%BC%9A"><span class="toc-number">4.8.</span> <span class="toc-text">总结一句话：</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Posts</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/07/24/%E9%93%BE%E4%B8%8A%E8%B4%A6%E6%88%B7%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E6%A0%87%E5%87%86%E6%B5%81%E7%A8%8B/" title="链上账户生命周期标准流程">链上账户生命周期标准流程</a><time datetime="2025-07-24T07:27:58.000Z" title="Created 2025-07-24 15:27:58">2025-07-24</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/07/24/SPL%20Token%E7%AE%80%E5%8D%95%E5%90%88%E7%BA%A6/" title="SPL Token简单合约">SPL Token简单合约</a><time datetime="2025-07-24T07:27:16.000Z" title="Created 2025-07-24 15:27:16">2025-07-24</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/07/24/SPL%20Token/" title="SPL Token">SPL Token</a><time datetime="2025-07-24T07:24:39.000Z" title="Created 2025-07-24 15:24:39">2025-07-24</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/07/24/%E8%B4%A6%E6%88%B7%E7%AE%80%E5%8D%95%E4%BA%A4%E4%BA%92/" title="账户简单交互">账户简单交互</a><time datetime="2025-07-24T07:21:58.000Z" title="Created 2025-07-24 15:21:58">2025-07-24</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/07/17/solana%E5%BC%80%E5%8F%91%E5%85%A5%E9%97%A8/" title="solana开发入门">solana开发入门</a><time datetime="2025-07-17T09:16:39.000Z" title="Created 2025-07-17 17:16:39">2025-07-17</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2025 By Li</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.3.5</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Reading Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light and Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle Between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Settings"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back to Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
